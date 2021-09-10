@@ -1,0 +1,157 @@
+.mainBackground{
+    width: 100%;
+    height: 700px;
+    background-image: url("https://cdnimg.vietnamplus.vn/uploaded/izhsa/2019_10_08/jokeranatomy2videosixteenbyninejumbo1600.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
+    filter: blur(10px);
+    position: relative;
+}
+
+.styleBlur{
+    background: linear-gradient(to top, rgb(10, 32, 41), transparent 100%);
+    top: 0;
+    left: 0;
+    height: 70%;
+    width: 100%;
+    position: absolute;
+}
+
+.movieDetail{
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    max-width: 1080px;
+}
+
+.playIcon{
+    position: absolute;
+    color: white;
+    top: 35%;
+    left: 30%;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.playIcon:hover{
+    color: white;
+    opacity: 1;
+}
+
+.ageRating{
+    background-color: #00ac4d;
+    padding: 0 7px;
+    font-size: 15px !important;
+    float: left;
+    font-weight: bold !important;
+}
+
+.star{
+    color: #FFB319 !important;
+    display: inline-block;
+    font-size: 30px !important;
+}
+
+.darkBackground{
+    background-color: rgb(10, 32, 41);
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    top: 70%;
+}
+
+.content{
+    clear: both;
+    position: absolute;
+    left: 25%;
+    top: 64%;
+    width: 870px;
+}
+
+#contentNav ul li{
+    position: relative;
+}
+
+#contentNav > ul li a.active::after{
+    content: "";
+    height: 3px;
+    width: 100%;
+    background:linear-gradient(to right,#fbbd61,#ec7532);
+    display: block;
+    position: absolute;
+    top: 41px;
+    left: 0;
+}
+
+/* .content ul li a::after{
+    content: "";
+    height: 3px;
+    width: 100%;
+    background:linear-gradient(to right,#fbbd61,#ec7532);
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+} */
+
+.contentNavLink{
+    background-color: transparent !important;
+}
+
+.showtmeNavLink:hover,.contentNavLink:hover{
+    text-decoration: none;
+    color: #fff;
+}
+
+.contentNavLink.active{
+    color: #FFB319 !important;
+}
+
+.showtmeNavLink.active{
+    color: #FFB319 !important;
+}
+
+.leftInfo{
+    text-align: left !important;
+}
+
+.contentTitle{
+    width: 35%;
+}
+
+.contentInfo{
+    width: 40%;
+    margin-left: 75px;
+}
+
+.btn-viewingTime{
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+    display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    margin-right: 1rem;
+}
+
+.btn-viewingTime:hover{
+    color: #212529;
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+}
+
+.border-lightGray{
+    border: 1px solid rgba(222, 226, 230, .25) !important;
+}
+
+.reviewInput{
+    height: 50px;
+    max-width: 550px;
+    background-color: #fff;
+}
