@@ -6,14 +6,14 @@ export default function Header(props) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
-        setScroll(window.pageYOffset > 500)
+        setScroll(window.pageYOffset > 200)
       );
     }
   }, []);
   return (
     <div>
-      <header className={`header px-4 py-2 text-white fixed w-full border-b z-10 ${
-          scroll ? "bg-gray-100 bg-opacity-95" : "bg-transparent"
+      <header className={`px-4 py-2 text-white fixed w-full bg-gray-100 border-b z-10 ${
+          scroll ? "bg-opacity-95 shadow-md" : "bg-opacity-0"
         }`}>
         <div className="container flex justify-between h-16 mx-auto">
           <NavLink
@@ -32,11 +32,13 @@ export default function Header(props) {
               <path d="M22.094 19.451h-0.758c-0.188 0-0.363 0.049-0.515 0.135l0.006-0.004-4.574 2.512-5.282-3.049v-6.082l5.282-3.051 4.576 2.504c0.146 0.082 0.323 0.131 0.508 0.131h0.758c0.293 0 0.529-0.239 0.529-0.531v-0.716c0-0.2-0.11-0.373-0.271-0.463l-0.004-0.002-5.078-2.777c-0.293-0.164-0.645-0.26-1.015-0.26-0.39 0-0.756 0.106-1.070 0.289l0.010-0.006-5.281 3.049c-0.636 0.375-1.056 1.055-1.059 1.834v6.082c0 0.779 0.422 1.461 1.049 1.828l0.009 0.006 5.281 3.049c0.305 0.178 0.67 0.284 1.061 0.284 0.373 0 0.723-0.098 1.027-0.265l-0.012 0.006 5.080-2.787c0.166-0.091 0.276-0.265 0.276-0.465v-0.716c0-0.293-0.238-0.529-0.529-0.529z"></path>
             </svg> */}
           </NavLink>
-          <ul className="items-stretch hidden space-x-3 ml-5 no-underline font-semibold text-md lg:flex">
+          <ul className={`items-stretch hidden pt-3 space-x-3 ml-5 no-underline font-semibold lg:flex ${
+                  scroll ? "text-md" : "text-lg"
+                }`}>
             <li className="flex">
               <NavLink
                 to="/home"
-                className={`flex items-center px-4 -mb-1 border-b-2 border-transparent ${
+                className={`flex items-center px-4 -mb-1 border-b-2 border-transparent transition-all ${
                   scroll ? "text-black" : "text-white"
                 }`}
               >

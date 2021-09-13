@@ -1,45 +1,45 @@
 import axios from "axios";
-import {USER_LOGIN} from '../util/settings/config'
+import {DOMAIN, TOKEN} from '../util/settings/config'
 
 export class baseService {
 
     get = (url) =>{
         return axios({
-            url:url,
+            url:`${DOMAIN}/${url}`,
             method:'GET',
             headers:{
-                'Authorization': `Bearer ${localStorage.getItem(USER_LOGIN)}`
+                'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)
             }
         })
     }
 
     post = (url,data) =>{
         return axios({
-            url:url,
+            url:`${DOMAIN}/${url}`,
             data:data,
             method:'POST',
             headers:{
-                'Authorization': `Bearer ${localStorage.getItem(USER_LOGIN)}`
+                'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)
             }
         })
     }
 
     put = (url,data) => {
         return axios({
-            url:url,
+            url:`${DOMAIN}/${url}`,
             data:data,
             method:'PUT',
             headers:{
-                'Authorization': `Bearer ${localStorage.getItem(USER_LOGIN)}`
+                'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)
             }
         })
     }
     delete = (url) => {
         return axios({
-            url:url,
+            url:`${DOMAIN}/${url}`,
             method:'DELETE',
             headers:{
-                'Authorization': `Bearer ${localStorage.getItem(USER_LOGIN)}`
+                'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)
             }
         })
     }

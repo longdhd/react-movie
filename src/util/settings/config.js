@@ -1,4 +1,3 @@
-export const USER_LOGIN = 'userLogin';
-export const GROUPID = 'GP00';
-export const LAYDANHSACHPHIM = 'LAY_DANH_SACH_PHIM'
-export const LAYDANHSACHRAP = 'LAY_DANH_SACH_RAP';
+export const DOMAIN = 'http://movieapi.cyberlearn.vn';
+export const TOKEN = 'accessToken';
+export const GROUPID = `GP05`;
