@@ -1,48 +1,56 @@
-import React,{useEffect} from "react";
-import { Carousel } from "antd";
-import {useSelector,useDispatch} from 'react-redux';
-import axios from 'axios';
+import React, { useEffect } from "react";
+// import OwlCarousel from "react-owl-carousel";
+// import "owl.carousel/dist/assets/owl.carousel.css";
+// import "owl.carousel/dist/assets/owl.theme.default.css";
+import Slider from "react-slick";
+import './HomeCarousel.css';
+import { useSelector, useDispatch } from "react-redux";
 import { getCarouselAction } from "../../../Redux/action/CarouselAction";
 
-
 export default function HomeCarousel(props) {
+  const { arrImg } = useSelector((state) => state.CarouselReducer);
   
-  const {arrImg} = useSelector(state => state.CarouselReducer);
-  
-  const contentStyle = {
-    height: "760px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    background: "#364d79",
-    backgroundPosition:'top',
-    backgroundSize: '100%',
-    backgroundRepeat: 'none'
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dotsClass: "button__bar",
+    autoplay: true,
+    autoplaySpeed: 2000
   };
 
   const dispatch = useDispatch();
 
-  useEffect( ()  => {
-    
+  useEffect(() => {
     const action = getCarouselAction;
 
     dispatch(action);
+  },[]);
 
-  }, [])
-
-  const renderImg = () =>{
-    return arrImg.map((item,index) =>{
-      return <div key={index}>
-        <div style={{...contentStyle,backgroundImage:`url(${item.hinhAnh})`}}>
-            <img className="opacity-0" src={item.hinhAnh} alt="banner"></img>
+  const renderImg = () => {
+    return arrImg.map((item, index) => {
+      return (
+        <div key={index}>
+            <img src={item.hinhAnh} style={{width:'100%',height:'100%'}}></img>
         </div>
-      </div>
-    })
-  }
+      );
+    });
+  };
 
   return (
-    <Carousel effect="fade">
-      {renderImg()}
-    </Carousel>
+    // <Carousel effect="fade">
+    //   {renderImg()}
+    // </Carousel>
+    // <OwlCarousel className="owl-theme w-screen" autoplay={false} items={1}>
+    //   {renderImg()}
+    // </OwlCarousel>
+    <div>
+      <Slider {...settings} style={{height: "760px", overflow: 'hidden'}}>
+        {renderImg()}
+      </Slider>
+    </div>
   );
 }
