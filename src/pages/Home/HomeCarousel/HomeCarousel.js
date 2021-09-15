@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import './HomeCarousel.css';
 import { useSelector, useDispatch } from "react-redux";
 import { getCarouselAction } from "../../../Redux/action/CarouselAction";
+import { layDanhSachPhimAction } from "../../../Redux/action/QuanLyPhimAction";
 
 export default function HomeCarousel(props) {
   const { arrImg } = useSelector((state) => state.CarouselReducer);
@@ -26,6 +27,12 @@ export default function HomeCarousel(props) {
 
   useEffect(() => {
     const action = getCarouselAction;
+
+    dispatch(action);
+  },[]);
+
+  useEffect(() => {
+    const action = layDanhSachPhimAction;
 
     dispatch(action);
   },[]);

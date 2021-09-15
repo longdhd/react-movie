@@ -1,21 +1,9 @@
 import React from "react";
-import { Card } from "antd";
-const { Meta } = Card;
+import "./FilmEffect.css";
 
-export default function Film(props) {
+export default function FilmEffect(props) {
   const { moTa, phim } = props;
   return (
-    // <Card
-    //   hoverable
-    //   cover={
-    //     <img
-    //       alt={phim.biDanh}
-    //       src={phim.hinhAnh}
-    //     />
-    //   }
-    // >
-    //   {/* <Meta title={phim.tenPhim} description={moTa} className="text-center"/> */}
-    // </Card>
     <div className="p-4">
       <div className="h-full bg-transparent rounded-lg overflow-hidden text-center relative">
         <div
@@ -25,18 +13,28 @@ export default function Film(props) {
             backgroundSize: "100%",
             height: "360px",
             position: "relative",
-            backgroundRepeat: "none",
-          }}
+            backgroundRepeat: "none"
+          }} className="rounded"
         >
           <img className="opacity-0" src={phim.hinhAnh} alt={phim.biDanh}></img>
         </div>
-        <div className="text-left px-2 mt-2 w-full">
-          <a>
-            <p className="capitalize truncate font-bold text-lg">
-              {phim.tenPhim}
-            </p>
-          </a>
+        <div className="flip-card text-left w-full">
+          <div className="flip-card-inner">
+            <div className="flip-card-front pt-2">
+              <a>
+                <p className="capitalize truncate font-bold text-lg">
+                  {phim.tenPhim}
+                </p>
+              </a>
+            </div>
+            <div className="flip-card-back pt-1 items-center">
+              <a>
+                <p className="pt-2 font-semibold text-lg rounded-md" style={{height:'40px'}}>ĐẶT VÉ</p>
+              </a>
+            </div>
+          </div>
         </div>
+
         <div className="bg-gray-900 px-2 rounded absolute flex top-10 left-2/3 bg-opacity-75">
           <span className="text-white font-semibold text-lg">
             {phim.danhGia}/10

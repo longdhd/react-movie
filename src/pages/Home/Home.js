@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div>
       <HomeCarousel />
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container">
           <MultipleRowSlick arrFilm={arrFilm} />
       </div>
       <div style={{ backgroundColor: "#1E2129" }}>
