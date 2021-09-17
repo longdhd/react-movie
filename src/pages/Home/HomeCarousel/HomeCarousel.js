@@ -6,7 +6,6 @@ import Slider from "react-slick";
 import './HomeCarousel.css';
 import { useSelector, useDispatch } from "react-redux";
 import { getCarouselAction } from "../../../Redux/action/CarouselAction";
-import { layDanhSachPhimAction } from "../../../Redux/action/QuanLyPhimAction";
 
 export default function HomeCarousel(props) {
   const { arrImg } = useSelector((state) => state.CarouselReducer);
@@ -26,15 +25,7 @@ export default function HomeCarousel(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const action = getCarouselAction;
-
-    dispatch(action);
-  },[]);
-
-  useEffect(() => {
-    const action = layDanhSachPhimAction;
-
-    dispatch(action);
+    dispatch(getCarouselAction)
   },[]);
 
   const renderImg = () => {
@@ -48,12 +39,6 @@ export default function HomeCarousel(props) {
   };
 
   return (
-    // <Carousel effect="fade">
-    //   {renderImg()}
-    // </Carousel>
-    // <OwlCarousel className="owl-theme w-screen" autoplay={false} items={1}>
-    //   {renderImg()}
-    // </OwlCarousel>
     <div>
       <Slider {...settings} style={{height: "760px", overflow: 'hidden'}}>
         {renderImg()}

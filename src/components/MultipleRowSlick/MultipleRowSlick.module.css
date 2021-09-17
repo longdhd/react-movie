@@ -1,5 +1,5 @@
 .slick-prev:before, .slick-next:before {
-    color: #FB923C !important;
+    color: rgb(30, 33, 41) !important;
     font-size: 3rem !important;
 }
 

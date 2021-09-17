@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomeCarousel from "./HomeCarousel/HomeCarousel";
 import HomeMenu from "./HomeMenu/HomeMenu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MultipleRowSlick from "../../components/MultipleRowSlick/MultipleRowSlick";
+import { layDanhSachPhimAction } from "../../Redux/action/QuanLyPhimAction";
+import {layLichChieuAction} from '../../Redux/action/QuanLyRapAction';
 
 
 
 export default function Home() {
   const { arrFilm } = useSelector((state) => state.QuanLyPhimReducer);
-
+  const { heThongRapChieu } = useSelector((state) => state.QuanLyRapReducer);
+  const dispatch = useDispatch();
   // const renderFilm = () => {
   //   return arrFilm.map((item, index) => {
   //     var moTa = _.replace(_.replace(item.moTa,"<p>",""),"</p>","");
@@ -16,15 +19,19 @@ export default function Home() {
   //   });
   // };
 
+  useEffect(() => {
+    dispatch(layDanhSachPhimAction);
+    dispatch(layLichChieuAction);
+    // console.log('heThongRapChieu',heThongRapChieu);
+  }, [])
+
   return (
     <div>
       <HomeCarousel />
-      <div className="container">
-          <MultipleRowSlick arrFilm={arrFilm} />
-      </div>
+      <MultipleRowSlick arrFilm={arrFilm} />
       <div style={{ backgroundColor: "#1E2129" }}>
         <div className="container mx-36 py-10">
-          <HomeMenu />
+          <HomeMenu heThongRapChieu={heThongRapChieu} />
         </div>
       </div>
       <div
