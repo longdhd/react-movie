@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ChiTietPhim.css";
 import "../../assets/styles/circle-percentage/circle.css"
+import { useSelector, useDispatch } from "react-redux";
+import {layThongTinLichChieuPhim} from "../../Redux/action/QuanLyRapAction";
 
-export default function ChiTietPhim() {
+export default function ChiTietPhim(props) {
+
+  const filmDetail = useSelector(state => state.QuanLyRapReducer.filmDetail);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let {id} = props.match.params;
+    dispatch(layThongTinLichChieuPhim(id));
+  }, [])
+
   return (
     <div className="mt-0">
-      <div className="mainBackground"></div>
+      <div style={{backgroundImage:`url(${filmDetail.hinhAnh})`, width:'100%',height:'700px',backgroundSize:'cover',backgroundPosition:'center',backgroundRepeat:'no-repeat',filter:'blur(10px)',position:'relative'}}></div>
       <div className="styleBlur"></div>
       <div className="movieDetail text-white font-semibold">
         <div class="row">
@@ -16,7 +28,7 @@ export default function ChiTietPhim() {
             >
               <img
                 className="w-5/6"
-                src="https://cdn-amz.fado.vn/images/I/71OIhbUOF-L.jpg"
+                src={filmDetail.hinhAnh}
                 alt="joker-poster"
               ></img>
               <svg

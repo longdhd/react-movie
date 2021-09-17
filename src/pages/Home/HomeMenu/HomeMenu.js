@@ -58,7 +58,7 @@ export default function HomeMenu(props) {
                               </div>
                               <div className="col-9 text-left">
                                 <div className="flex">
-                                  <h3 className="font-bold uppercase" style={{color:'#ffc107'}}>{phim.tenPhim}</h3>
+                                  <h3 className="font-bold  uppercase" style={{color:'#ffc107'}}>{phim.tenPhim}</h3>
                                   <span className={`text-white px-2 ml-2 font-bold ${phim.hot ? "opacity-0" : "opacity-100"}`}
                                   style={{background:'linear-gradient(314deg, #ef5734 0%, #ffcc2f 74%)'}}>HOT</span>
                                 </div>

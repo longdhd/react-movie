@@ -16,7 +16,8 @@ const stateDefault = {
             "dangChieu": true,
             "sapChieu": false
           }
-    ]
+    ],
+    
 }
 
 export const QuanLyPhimReducer = (state = stateDefault, action) => {

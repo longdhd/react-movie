@@ -1,5 +1,6 @@
 import React from "react";
 import "./FilmEffect.css";
+import {history} from '../../App';
 
 export default function FilmEffect(props) {
   const { phim } = props;
@@ -30,14 +31,16 @@ export default function FilmEffect(props) {
               </a>
             </div>
             <div className="flip-card-back pt-1 items-center">
-              <a>
+              <div onClick={() => {
+                history.push(`/detail/${phim.maPhim}`)
+              }} className="text-white">
                 <p
                   className="pt-2 font-semibold text-lg rounded-md"
                   style={{ height: "40px" }}
                 >
                   ĐẶT VÉ
                 </p>
-              </a>
+              </div>
             </div>
           </div>
         </div>
