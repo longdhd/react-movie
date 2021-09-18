@@ -151,6 +151,7 @@
 
 .reviewInput{
     height: 50px;
-    max-width: 550px;
+    max-width: 720px;
     background-color: #fff;
+    width: 100%;
 }
