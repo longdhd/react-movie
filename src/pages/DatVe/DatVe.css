@@ -38,3 +38,9 @@
     background: purple !important;
     border: 3px solid purple !important;
   }
+
+  .gheKhachDangDat{
+    background-color: pink !important;
+    border: 3px solid pink !important;
+    cursor: no-drop;
+  }

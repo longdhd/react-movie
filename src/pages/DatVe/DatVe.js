@@ -7,16 +7,17 @@ import {
   layDanhSachPhongVeAction,
 } from "../../Redux/action/QuanLyDatVeAction";
 import { CloseOutlined, UserOutlined } from "@ant-design/icons";
-import { DAT_VE } from "../../Redux/types/QuanLyDatVeType";
+import { CHUYEN_TAB, DAT_VE } from "../../Redux/types/QuanLyDatVeType";
 import { DanhSachVe } from "../../_core/models/DanhSachVe";
 import _ from "lodash";
 import { Tabs } from "antd";
 import { layThongTinTaiKhoanAction } from "../../Redux/action/QuanLyNguoiDungAction";
 import moment from "moment";
 import { NavLink } from "react-router-dom";
+import { connection } from "../..";
 
 function ChonGhe(props) {
-  const { chiTietPhongVe, danhSachGheDangDat } = useSelector(
+  const { chiTietPhongVe, danhSachGheDangDat, danhSachGheKhachDangDat } = useSelector(
     (state) => state.QuanLyDatVeReducer
   );
 
@@ -27,10 +28,15 @@ function ChonGhe(props) {
   useEffect(() => {
     const action = layDanhSachPhongVeAction(props.match.params.id);
     dispatch(action);
+    
+    //Load danh sách ghế người khác đang đặt từ server
+    connection.on("loadDanhSachGheDaDat",(dsGheKhachDat)=> {
+      console.log('danhSachGheKhachDat',dsGheKhachDat);
+    })
   }, []);
 
   const { thongTinPhim, danhSachGhe } = chiTietPhongVe;
-
+  
   const renderGhe = () => {
     return danhSachGhe.map((ghe, index) => {
       let classGheVip = ghe.loaiGhe === "Vip" ? "gheVip" : "";
@@ -40,6 +46,12 @@ function ChonGhe(props) {
         (gheDangDat) => gheDangDat.maGhe === ghe.maGhe
       );
       let classGheDatThanhCong = "";
+      //Kiểm tra ghế người khác đăng đặt
+      let classGheKhachDangDat = '';
+      let indexGheKhachDangDat = danhSachGheKhachDangDat.findIndex(gheKhach => gheKhach.maGhe === ghe.maGhe);
+      if(indexGheKhachDangDat!=-1){
+        classGheKhachDangDat = 'gheKhachDangDat';
+      }
       if (userLogin.taiKhoan === ghe.taiKhoanNguoiDat) {
         classGheDatThanhCong = "gheDatThanhCong";
       }
@@ -49,14 +61,14 @@ function ChonGhe(props) {
       return (
         <Fragment key={index}>
           <button
-            disabled={ghe.daDat}
+            disabled={ghe.daDat || classGheKhachDangDat!=''}
             onClick={() => {
               dispatch({
                 type: DAT_VE,
                 gheDuocChon: ghe,
               });
             }}
-            className={`ghe ${classGheDatThanhCong} ${classGheDangDat} ${classGheVip} ${classGheDaDat}`}
+            className={`ghe ${classGheKhachDangDat} ${classGheDatThanhCong} ${classGheDangDat} ${classGheVip} ${classGheDaDat}`}
           >
             {ghe.daDat ? (
               classGheDatThanhCong != "" ? (
@@ -98,6 +110,7 @@ function ChonGhe(props) {
                   <th>Ghế VIP</th>
                   <th>Ghế đang chọn</th>
                   <th>Ghế đặt thành công</th>
+                  <th>Ghế người khác đang chọn</th>
                 </tr>
               </thead>
               <tbody>
@@ -123,6 +136,10 @@ function ChonGhe(props) {
                       <UserOutlined
                         style={{ color: "white", fontSize: "1.2rem" }}
                       />
+                    </button>
+                  </td>
+                  <td>
+                    <button className="ghe gheKhachDangDat ml-5">
                     </button>
                   </td>
                 </tr>
@@ -214,7 +231,9 @@ console.log(userInfo);
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex justify-end" style={{fontSize:'1rem'}}>
-          <NavLink className="border-2 p-2 text-indigo-700 border-indigo-500 rounded" to="/">Trở về trang chủ</NavLink>
+          <NavLink onClick={()=> {
+              dispatch({type:CHUYEN_TAB});
+          }} className="border-2 p-2 text-indigo-700 border-indigo-500 rounded" to="/">Trở về trang chủ</NavLink>
         </div>
         <div className="flex flex-col text-center w-full mb-20">
           <h1 className="text-2xl font-medium title-font mb-4 text-green-400 tracking-widest">
@@ -266,10 +285,12 @@ function callback(key) {
 
 export default function DatVe(props) {
   const {activeTab} = useSelector(state => state.QuanLyDatVeReducer);
-  console.log(activeTab);
+  console.log('activeTab',activeTab);
   return (
     <div className="pl-5">
-      <Tabs defaultActiveKey="1" activeKey={activeTab} onChange={callback}>
+      <Tabs defaultActiveKey="1" 
+      // activeKey={activeTab} 
+      onChange={callback}>
         <TabPane tab="01 - CHỌN GHẾ & THANH TOÁN" key="1">
           <ChonGhe {...props} />
         </TabPane>

@@ -4,6 +4,7 @@ import { CHUYEN_TAB, DAT_VE, DAT_VE_THANH_CONG, GET_DANH_SACH_PHONG_VE } from ".
 const stateDefault = {
     chiTietPhongVe: new ChiTietPhongVe(),
     danhSachGheDangDat: [],
+    danhSachGheKhachDangDat : [{maGhe:108521},{maGhe:108522}],
     activeTab: "1"
 }
 
@@ -28,7 +29,11 @@ export const QuanLyDatVeReducer = (state = stateDefault,action) => {
             return {...state};
         }
         case CHUYEN_TAB:{
-            state.activeTab = "2";
+            if(state.activeTab = "2"){
+                state.activeTab = "1";
+            }else{
+                state.activeTab = "2";
+            }
             return {...state};
         }
         default:
