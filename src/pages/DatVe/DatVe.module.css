@@ -1,9 +1,9 @@
 .trapezoid {
-    border-bottom: 50px solid gray;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    height: 0;
-    width: 80%;
-    opacity: 0.25;
-    filter: drop-shadow(0 0 40px gray );
-  }
+  border-bottom: 50px solid gray;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  height: 0;
+  width: 80%;
+  opacity: 0.25;
+  filter: drop-shadow(0 0 40px gray);
+}

@@ -7,7 +7,7 @@ import {
 export const layLichChieuAction = async (dispatch) => {
   try {
     const result = await qLRapService.layLichChieu();
-    if (result.status === 200) {
+    if (result.data.statusCode === 200) {
       dispatch({
         type: GET_LICH_CHIEU,
         heThongRapChieu: result.data.content,
@@ -22,7 +22,6 @@ export const layThongTinLichChieuPhim = (id) => {
   return async (dispatch) => {
     try {
       const result = await qLRapService.layThongTinLichChieuPhim(id);
-      console.log(result);
       dispatch({
         type: GET_THONG_TIN_LICH_CHIEU_PHIM,
         filmDetail: result.data.content,

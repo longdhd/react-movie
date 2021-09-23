@@ -1,5 +1,5 @@
 import { GROUPID } from "../util/settings/config";
-import { baseService } from "./baseService"
+import { baseService } from "./baseService";
 
 //Sử dụng nghiệp vụ liên quan tới API
 export class QuanLyPhimService extends baseService{

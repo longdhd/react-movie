@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { layThongTinLichChieuPhim } from "../../Redux/action/QuanLyRapAction";
 import moment from "moment";
 import _ from "lodash";
-import { Rate, Tabs, Radio } from "antd";
+import { Rate, Tabs } from "antd";
 import { NavLink } from "react-router-dom";
 
 const { TabPane } = Tabs;
@@ -22,6 +22,12 @@ export default function ChiTietPhim(props) {
   });
 
   const { tabPosition } = state;
+
+  const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  };
 
   useEffect(() => {
     let { id } = props.match.params;
@@ -49,10 +55,10 @@ export default function ChiTietPhim(props) {
             <a href={filmDetail.trailer} target="_blank">
               <img
                 className="w-5/6"
-                src={filmDetail.hinhAnh}
+                src={filmDetail.hinhAnh} onError={(e)=>{e.target.onerror = null; e.target.src=`https://picsum.photos/200/300?random=${filmDetail.maPhim}`}}
                 alt={filmDetail.tenPhim}
               ></img>
-              <svg
+              <svgs
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-24 w-24 playIcon"
                 fill="none"
@@ -71,7 +77,7 @@ export default function ChiTietPhim(props) {
                   strokeWidth={2}
                   d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
-              </svg>
+              </svgs>
             </a>
           </div>
           <div class="col-4 movieInfo text-left py-32">
@@ -97,7 +103,9 @@ export default function ChiTietPhim(props) {
             <div>
               <Rate disabled defaultValue={filmDetail.danhGia / 2} />
             </div>
-            <div className="text-sm">197 người đánh giá</div>
+            <div className="text-sm">
+              {getRandomInt(100, 1000)} người đánh giá
+            </div>
           </div>
         </div>
       </div>
@@ -217,15 +225,30 @@ export default function ChiTietPhim(props) {
                                   </div>
                                 </div>
                                 <div className="grid grid-cols-5">
-                                  {cumRap.lichChieuPhim.splice(0,10).map((lichChieu, index) => {
-                                    return <NavLink style={{backgroundImage:'linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%)'}} className="mr-5 mt-5 px-2 text-lg text-white fond-bold rounded" to="/" key={index}>{moment(lichChieu.ngayChieuGioChieu).format('hh:mm')}</NavLink>
-                                  })}
+                                  {cumRap.lichChieuPhim
+                                    .splice(0, 10)
+                                    .map((lichChieu, index) => {
+                                      return (
+                                        <NavLink
+                                          style={{
+                                            backgroundImage:
+                                              "linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%)",
+                                          }}
+                                          className="mr-5 mt-5 px-2 text-lg text-white fond-bold rounded"
+                                          to={`/checkout/${lichChieu.maLichChieu}`}
+                                          key={index}
+                                        >
+                                          {moment(
+                                            lichChieu.ngayChieuGioChieu
+                                          ).format("hh:mm")}
+                                        </NavLink>
+                                      );
+                                    })}
                                 </div>
                               </div>
                             }
                             key={index}
-                          >
-                          </TabPane>
+                          ></TabPane>
                         );
                       })}
                     </Tabs>

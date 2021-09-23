@@ -1,5 +1,6 @@
 import React, {useEffect,useState} from "react";
 import {NavLink} from 'react-router-dom';
+import {history} from './../../../../App';
 
 export default function Header(props) {
   const [scroll, setScroll] = useState(false);
@@ -37,7 +38,7 @@ export default function Header(props) {
                 }`}>
             <li className="flex">
               <NavLink
-                to="/home"
+                to="/"
                 className={`flex items-center px-4 -mb-1 border-b-2 border-transparent transition-all ${
                   scroll ? "text-black" : "text-white"
                 }`}
@@ -87,7 +88,9 @@ export default function Header(props) {
             </li>
           </ul>
           <div className="items-center flex-shrink-0 hidden lg:flex">
-            <button className={`self-center px-8 py-3 rounded ${
+            <button onClick={() =>{
+              history.push('/login');
+            }} className={`self-center px-8 py-3 rounded ${
                   scroll ? "text-black" : "text-white"
                 }`}>Đăng nhập</button>
             <button className={`self-center px-8 py-3 font-semibold rounded bg-violet-600 text-coolGray-50 ${

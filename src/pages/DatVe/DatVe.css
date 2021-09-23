@@ -1,0 +1,40 @@
+.ghe {
+    border: 3px solid gray;
+    background: #fff;
+    color: black;
+    width: 45px;
+    height: 35px;
+    font-size: 12px;
+    margin-left: 2%;
+    margin-bottom: 1%;
+    border-radius: 5px;
+  }
+  
+  .gheDaDat {
+    border: 3px solid red;
+    background: red !important;
+    color: #000;
+    cursor: no-drop !important;
+    border-radius: 5px;
+    width: 45px;
+    height: 35px;
+  }
+  
+  .gheDangDat {
+    background: #20f5ba !important;
+    border: 3px solid #20f5ba;
+    color: #000;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 45px;
+    height: 35px;
+  }
+  
+  .gheVip{
+    background: orange;
+  }
+
+  .gheDatThanhCong{
+    background: purple !important;
+    border: 3px solid purple !important;
+  }
