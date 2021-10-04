@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import _ from "lodash";
 import Film from "../Film/Film";
 import styleSlick from "./MultipleRowSlick.module.css";
+import "./MultipleRowSlick.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FilmEffect from "../Film/FilmEffect";
@@ -59,7 +60,7 @@ export default class MultipleRowSlick extends Component {
       centerMode: true,
       infinite: true,
       centerPadding: "20px",
-      slidesToShow: 5,
+      slidesToShow: 4,
       speed: 500,
       rows: 2,
       slidesPerRow: 1,
@@ -69,7 +70,7 @@ export default class MultipleRowSlick extends Component {
     };
     return (
       <Fragment>
-        <ul class="nav nav-pills justify-center pt-5 font-semibold text-lg">
+        <ul class="nav navOnAir nav-pills justify-center pt-5 font-semibold text-lg">
           <li class="nav-item">
             <a class="nav-link active" data-toggle="pill" href="#dangChieu">
               Phim Đang Chiếu

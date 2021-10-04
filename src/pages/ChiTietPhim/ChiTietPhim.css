@@ -1,4 +1,7 @@
-.mainBackground{
+.detailPage{
+    background-color: rgb(32, 32, 54) !important;
+}
+/* .mainBackground{
     width: 100%;
     height: 700px;
     background-size: cover;
@@ -6,10 +9,10 @@
     background-repeat: none;
     filter: blur(10px);
     position: relative;
-}
+} */
 
 .styleBlur{
-    background: linear-gradient(to top, rgb(10, 32, 41), transparent 100%);
+    background: linear-gradient(to top, rgba(32,32,54,1.0), transparent 100%);
     top: 0;
     left: 0;
     height: 70%;
@@ -53,7 +56,7 @@
 }
 
 .darkBackground{
-    background-color: rgb(10, 32, 41);
+    background-color: rgb(32, 32, 54);
     width: 100%;
     height: 500px;
     position: absolute;
@@ -62,17 +65,27 @@
 
 .content{
     clear: both;
-    position: absolute;
-    left: 25%;
+    position: relative;
+    left: 28%;
     top: 64%;
     width: 870px;
+    height: 700px !important;
+}
+
+ul.navFilmDetail li .nav-link.active{
+    background: linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%) !important;
+    color: #fff !important;
+}
+
+ul.navFilmDetail li .nav-link{
+    color: #00baff !important;
 }
 
 #contentNav ul li{
     position: relative;
 }
 
-#contentNav > ul li a.active::after{
+/* #contentNav > ul li a.active::after{
     content: "";
     height: 3px;
     width: 100%;
@@ -81,7 +94,7 @@
     position: absolute;
     top: 41px;
     left: 0;
-}
+} */
 
 /* .content ul li a::after{
     content: "";
@@ -103,13 +116,13 @@
     color: #fff;
 }
 
-.contentNavLink.active{
+/* .contentNavLink.active{
     color: #FFB319 !important;
 }
 
 .showtmeNavLink.active{
     color: #FFB319 !important;
-}
+} */
 
 .leftInfo{
     text-align: left !important;

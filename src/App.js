@@ -11,6 +11,8 @@ import LogIn from "./pages/LogIn/LogIn";
 import {Suspense, lazy} from 'react';
 import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
 import Loading from "./components/Loading/Loading";
+import Register from "./pages/Register/Register";
+import Profile from "./pages/Profile/Profile";
 
 const DatVeTemplateLazy = lazy(()=> import("./templates/DatVeTemplate/DatVeTemplate"));
 
@@ -26,6 +28,8 @@ function App() {
         <HomeTemplate path="/contact" exact Component={Contact}/>
         <HomeTemplate path="/detail/:id" exact Component={ChiTietPhim}/>
         <UserTemplate path="/login" exact Component={LogIn}/>
+        <UserTemplate path="/register" exact Component={Register}/>
+        <HomeTemplate path="/profile" exact Component={Profile}/>
         <Suspense fallback={<h1>Loading...</h1>}>
           <DatVeTemplateLazy path="/checkout/:id" exact Component={DatVe}/>
         </Suspense>

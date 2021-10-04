@@ -1,3 +1,26 @@
+.checkoutBackground{
+  position: absolute;
+  height: 980px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  filter: blur(15px);
+}
+
+.checkoutBlur{
+  background: linear-gradient(to top, rgba(32,32,54,1.0), transparent 100%);
+  top: 0;
+  left: 0;
+  height: 107%;
+  width: 100%;
+  position: absolute;
+  z-index: 0 !important;
+}
+
+.checkoutTab{
+  z-index: 99 !important;
+}
+
 .ghe {
     border: 3px solid gray;
     background: #fff;
@@ -22,7 +45,7 @@
   
   .gheDangDat {
     background: #20f5ba !important;
-    border: 3px solid #20f5ba;
+    border: 3px solid #20f5ba !important;
     color: #000;
     cursor: pointer;
     border-radius: 5px;
@@ -32,6 +55,7 @@
   
   .gheVip{
     background: orange;
+    border: 3px solid orange;
   }
 
   .gheDatThanhCong{

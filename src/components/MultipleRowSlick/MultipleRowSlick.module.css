@@ -1,9 +1,16 @@
 .slick-prev:before, .slick-next:before {
-    color: rgb(30, 33, 41) !important;
+    color: #fff !important;
+    background: linear-gradient(-225deg, rgb(80, 204, 204) 35%, rgb(69, 174, 202) 100%);
     font-size: 3rem !important;
+    padding-top: 3px !important;
+    border-radius: 3rem;
 }
 
 
 .width-item {
     width: 100% !important;
+}
+
+.nav-link.active{
+    background-color: linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%) !important;
 }

@@ -1,10 +1,11 @@
 import { ChiTietPhongVe } from "../../_core/models/ChiTietPhongVe";
-import { CHUYEN_TAB, DAT_VE, DAT_VE_THANH_CONG, GET_DANH_SACH_PHONG_VE } from "../types/QuanLyDatVeType";
+import { CHUYEN_TAB, DAT_GHE, DAT_VE, DAT_VE_THANH_CONG, GET_DANH_SACH_PHONG_VE } from "../types/QuanLyDatVeType";
 
 const stateDefault = {
     chiTietPhongVe: new ChiTietPhongVe(),
     danhSachGheDangDat: [],
-    danhSachGheKhachDangDat : [{maGhe:108521},{maGhe:108522}],
+    danhSachGheKhachDangDat : [],
+    // {maGhe:108521},{maGhe:108522}
     activeTab: "1"
 }
 
@@ -35,6 +36,10 @@ export const QuanLyDatVeReducer = (state = stateDefault,action) => {
                 state.activeTab = "2";
             }
             return {...state};
+        }
+        case DAT_GHE:{
+            state.danhSachGheKhachDangDat = action.arrGheKhachDat;
+            return {...state}
         }
         default:
             return {...state};

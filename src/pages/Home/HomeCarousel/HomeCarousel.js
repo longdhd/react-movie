@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 // import OwlCarousel from "react-owl-carousel";
 // import "owl.carousel/dist/assets/owl.carousel.css";
 // import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -39,10 +39,15 @@ export default function HomeCarousel(props) {
   };
 
   return (
-    <div>
+    <Fragment>
+      <div>
       <Slider {...settings} style={{height: "760px", overflow: 'hidden'}}>
         {renderImg()}
       </Slider>
     </div>
+    <div className="carouselBlur">
+
+    </div>
+    </Fragment>
   );
 }

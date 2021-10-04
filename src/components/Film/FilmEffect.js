@@ -1,18 +1,20 @@
 import React from "react";
 import "./FilmEffect.css";
 import {history} from '../../App';
+import { CaretRightOutlined, UploadOutlined } from "@ant-design/icons";
 
 export default function FilmEffect(props) {
   const { phim } = props;
   return (
     <div className="p-4">
-      <div className="h-full bg-transparent rounded-lg overflow-hidden text-center relative">
+      <div className="h-full filmCard bg-transparent rounded-lg overflow-hidden text-center relative">
         <div
           style={{
             background: `url(${phim.hinhAnh}), url(https://picsum.photos/420/200?random=${phim.maPhim})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             height: "360px",
+            width:'100%',
             position: "relative",
             backgroundRepeat: "none",
           }}
@@ -22,7 +24,7 @@ export default function FilmEffect(props) {
         </div>
         <div className="flip-card w-full">
           <div className="flip-card-inner">
-            <div className="flip-card-front pt-2">
+            <div className="flip-card-front pt-4">
               <a>
                 <span className="ageRating rounded-md">P</span>
                 <p className="capitalize truncate text-left font-bold text-lg" style={{marginLeft:'35px'}}>
@@ -30,15 +32,15 @@ export default function FilmEffect(props) {
                 </p>
               </a>
             </div>
-            <div className="flip-card-back pt-1 items-center">
+            <div className="flip-card-back pt-3 items-center">
               <div onClick={() => {
                 history.push(`/detail/${phim.maPhim}`)
               }} className="text-white">
                 <p
-                  className="pt-2 font-semibold text-lg rounded-md"
+                  className="pt-2 font-semibold text-lg rounded-md flex justify-center"
                   style={{ height: "40px" }}
                 >
-                  ĐẶT VÉ
+                  MUA VÉ <UploadOutlined style={{fontSize:'1.2rem',paddingTop:'4px',marginLeft:'12px'}}/>
                 </p>
               </div>
             </div>
@@ -60,26 +62,7 @@ export default function FilmEffect(props) {
         </div>
         <div className="film__overlay rounded">
           <a href={phim.trailer} target="_blank">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                />
-                <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"  
-                />
-            </svg>
+              <CaretRightOutlined style={{color:'#fff',fontSize:'3.2rem'}}/>
           </a>
         </div>
       </div>

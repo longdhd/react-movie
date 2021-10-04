@@ -1,10 +1,15 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Route } from "react-router";
 
 export const UserTemplate = (props) => {
   //path,exact,component
 
   const { Component, ...restProps } = props;
+  
+  //Chuyển hướng trang luôn scroll lên đầu trang
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
 
   return (
     <Route

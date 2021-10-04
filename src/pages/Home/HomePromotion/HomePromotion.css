@@ -1,0 +1,30 @@
+h1.promotionHeading::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  height: 5px;
+  border: none;
+  border-top-color: currentcolor;
+  border-top-style: none;
+  border-top-width: medium;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  border-bottom: solid 1px #1890ff;
+  border-top: solid 1px #1890ff;
+  left: calc((100% - 80px) / 2);
+}
+
+.promotionTile {
+  -webkit-box-shadow: 0 0.5em 0.5em -0.25em rgba(20, 16, 41, 0.24),
+    0 0.125em 0.25em -0.062em rgba(20, 16, 41, 0.24),
+    0 0 0.063em rgba(20, 16, 41, 0.4);
+  box-shadow: 0 0.5em 0.5em -0.25em rgba(20, 16, 41, 0.24),
+    0 0.125em 0.25em -0.062em rgba(20, 16, 41, 0.24),
+    0 0 0.063em rgba(20, 16, 41, 0.4);
+  border-radius: 1.5em;
+  background-color: rgba(51, 51, 75, 0.24);
+  padding: 1em;
+  color:rgba(224,224,255,0.6);
+}

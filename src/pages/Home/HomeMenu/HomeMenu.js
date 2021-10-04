@@ -28,12 +28,12 @@ export default function HomeMenu(props) {
         >
           <Tabs tabPosition={tabPosition}>
             {/* Render cụm rạp */}
-            {heThongRap.lstCumRap.map((cumRap, index) => {
+            {heThongRap.lstCumRap.splice(0, 5).map((cumRap, index) => {
               return (
                 <TabPane
                   tab={
-                    <div className="text-left">
-                      <p style={{ color: "#e41a1a" }} className="font-semibold">
+                    <div className="text-left border-b-2 border-gray-200 border-opacity-50 pb-3">
+                      <p style={{ color: "#00baff" }} className="font-semibold">
                         {cumRap.tenCumRap}
                       </p>
                       <p
@@ -42,29 +42,30 @@ export default function HomeMenu(props) {
                       >
                         {cumRap.diaChi}
                       </p>
+                      <p style={{color:'#20f5ba'}} className="font-semibold">[chi tiết]</p>
                     </div>
                   }
                   key={index}
                 >
                   <Tabs tabPosition={tabPosition}>
                     {/* Render rạp */}
-                    {cumRap.danhSachPhim.map((phim,index) => {
+                    {cumRap.danhSachPhim.splice(0, 4).map((phim,index) => {
                       return(
                         <TabPane tab={
-                          <div className="container border-b-2 pb-3">
+                          <div className="container border-b-2 border-gray-200 border-opacity-50 pb-3" >
                             <div className="row">
                               <div className="col-3">
                                 <img src={phim.hinhAnh} style={{color:'#fff',width: 100}} onError={(e)=>{e.target.onerror = null; e.target.src=`https://picsum.photos/100/150?random=${phim.maPhim}`}} alt={phim.tenPhim}></img>
                               </div>
                               <div className="col-9 text-left">
                                 <div className="flex">
-                                  <h3 className="font-bold  uppercase" style={{color:'#ffc107'}}>{phim.tenPhim}</h3>
-                                  <span className={`text-white px-2 ml-2 font-bold ${phim.hot ? "opacity-0" : "opacity-100"}`}
+                                  <h3 className="font-bold uppercase" style={{color:'#1fd1e4'}}>{phim.tenPhim}</h3>
+                                  <span className={`text-white px-2 ml-3 font-bold ${phim.hot ? "opacity-0" : "opacity-100"}`}
                                   style={{background:'linear-gradient(314deg, #ef5734 0%, #ffcc2f 74%)'}}>HOT</span>
                                 </div>
                                 <div className="grid grid-cols-5">
                                   {phim.lstLichChieuTheoPhim?.splice(0,10).map((lichChieu,index) => {
-                                    return <NavLink style={{backgroundImage:'linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%)'}} className="mr-5 mt-5 pr-4 pl-2 text-lg text-white fond-bold rounded" to="/" key={index}>{moment(lichChieu.ngayChieuGioChieu).format('hh:mm')}</NavLink>
+                                    return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} style={{background:'#26c6da'}} className="mr-5 mt-4 pr-4 pl-2 text-lg text-white fond-bold rounded" key={index}>{moment(lichChieu.ngayChieuGioChieu).format('hh:mm')}</NavLink>
                                   })}
                                 </div>
                               </div>
@@ -83,7 +84,7 @@ export default function HomeMenu(props) {
     });
   };
 
-  return (
+  return(
     <>
       <Tabs tabPosition={tabPosition}>
         {/* <TabPane tab={<img className="rounded" style={{height:'50px'}} src="https://tenpack.com.vn/wp-content/uploads/2016/02/BHD-cineplex-logo.png"></img>} key="1">

@@ -3,11 +3,12 @@ import style from "./DatVe.module.css";
 import "./DatVe.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  datGheAction,
   datVeAction,
   layDanhSachPhongVeAction,
 } from "../../Redux/action/QuanLyDatVeAction";
 import { CloseOutlined, UserOutlined } from "@ant-design/icons";
-import { CHUYEN_TAB, DAT_VE } from "../../Redux/types/QuanLyDatVeType";
+import { CHUYEN_TAB, DAT_GHE, DAT_VE } from "../../Redux/types/QuanLyDatVeType";
 import { DanhSachVe } from "../../_core/models/DanhSachVe";
 import _ from "lodash";
 import { Tabs } from "antd";
@@ -17,9 +18,8 @@ import { NavLink } from "react-router-dom";
 import { connection } from "../..";
 
 function ChonGhe(props) {
-  const { chiTietPhongVe, danhSachGheDangDat, danhSachGheKhachDangDat } = useSelector(
-    (state) => state.QuanLyDatVeReducer
-  );
+  const { chiTietPhongVe, danhSachGheDangDat, danhSachGheKhachDangDat } =
+    useSelector((state) => state.QuanLyDatVeReducer);
 
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
 
@@ -28,15 +28,54 @@ function ChonGhe(props) {
   useEffect(() => {
     const action = layDanhSachPhongVeAction(props.match.params.id);
     dispatch(action);
-    
+
+    //Load lại phòng vé nếu có 1 client đặt vé thành công
+    connection.on("datVeThanhCong", () => {
+      dispatch(action);
+    });
+
+    //Cái đặt mặc định load ds ghế tất cả client khi vừa vào trang
+    connection.invoke("loadDanhSachGhe", props.match.params.id);
+
     //Load danh sách ghế người khác đang đặt từ server
-    connection.on("loadDanhSachGheDaDat",(dsGheKhachDat)=> {
-      console.log('danhSachGheKhachDat',dsGheKhachDat);
-    })
+    connection.on("loadDanhSachGheDaDat", (dsGheKhachDat) => {
+      console.log("danhSachGheKhachDangDat", dsGheKhachDat);
+      //Bước 1: Loại mình ra khỏi danh sách
+      dsGheKhachDat = dsGheKhachDat.filter(
+        (item) => item.taiKhoan !== userLogin.taiKhoan
+      );
+
+      //Bước 2: Gộp tất cả ds ghê đặt ở tất cả client thành 1 mảng chung
+
+      let arrGheKhachDat = dsGheKhachDat.reduce((result, item, index) => {
+        let arrGhe = JSON.parse(item.danhSachGhe);
+        return [...result, ...arrGhe];
+      }, []);
+
+      //Đưa dữ liệu khách đặt cập nhật redux
+      arrGheKhachDat = _.uniqBy(arrGheKhachDat, "maGhe");
+
+      dispatch({
+        type: DAT_GHE,
+        arrGheKhachDat,
+      });
+    });
+
+    //Cài đặt sự kiện khi reload trang
+    window.addEventListener("beforeunload", clearGhe);
+
+    return () => {
+      clearGhe();
+      window.removeEventListener("beforeunload", clearGhe);
+    };
   }, []);
 
+  const clearGhe = function (event) {
+    connection.invoke("huyDat", userLogin.taiKhoan, props.match.params.id);
+  };
+
   const { thongTinPhim, danhSachGhe } = chiTietPhongVe;
-  
+
   const renderGhe = () => {
     return danhSachGhe.map((ghe, index) => {
       let classGheVip = ghe.loaiGhe === "Vip" ? "gheVip" : "";
@@ -47,10 +86,12 @@ function ChonGhe(props) {
       );
       let classGheDatThanhCong = "";
       //Kiểm tra ghế người khác đăng đặt
-      let classGheKhachDangDat = '';
-      let indexGheKhachDangDat = danhSachGheKhachDangDat.findIndex(gheKhach => gheKhach.maGhe === ghe.maGhe);
-      if(indexGheKhachDangDat!=-1){
-        classGheKhachDangDat = 'gheKhachDangDat';
+      let classGheKhachDangDat = "";
+      let indexGheKhachDangDat = danhSachGheKhachDangDat.findIndex(
+        (gheKhach) => gheKhach.maGhe === ghe.maGhe
+      );
+      if (indexGheKhachDangDat != -1) {
+        classGheKhachDangDat = "gheKhachDangDat";
       }
       if (userLogin.taiKhoan === ghe.taiKhoanNguoiDat) {
         classGheDatThanhCong = "gheDatThanhCong";
@@ -61,12 +102,9 @@ function ChonGhe(props) {
       return (
         <Fragment key={index}>
           <button
-            disabled={ghe.daDat || classGheKhachDangDat!=''}
+            disabled={ghe.daDat || classGheKhachDangDat != ""}
             onClick={() => {
-              dispatch({
-                type: DAT_VE,
-                gheDuocChon: ghe,
-              });
+              dispatch(datGheAction(ghe, props.match.params.id));
             }}
             className={`ghe ${classGheKhachDangDat} ${classGheDatThanhCong} ${classGheDangDat} ${classGheVip} ${classGheDaDat}`}
           >
@@ -87,11 +125,12 @@ function ChonGhe(props) {
   };
 
   return (
-    <div className="min-h-screen">
+  
+  <div className="min-h-screen" style={{color:'#fff'}}>
       <div className="grid grid-cols-12">
         <div className="col-span-9">
           <div className="flex flex-col items-center">
-            <div className="text-black-800 font-bold mb-1 uppercase">
+            <div className="text-black-800 font-bold text-2xl mb-1 uppercase">
               Màn hình
             </div>
             <div
@@ -139,16 +178,15 @@ function ChonGhe(props) {
                     </button>
                   </td>
                   <td>
-                    <button className="ghe gheKhachDangDat ml-5">
-                    </button>
+                    <button className="ghe gheKhachDangDat ml-5"></button>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div className="col-span-3 border-l-2 pl-3">
-          <h3 className="text-center text-green-400 text-2xl my-3">
+        <div className="col-span-3 border-l-2 border-opacity-25 pl-3">
+          <h3 className="text-center text-2xl my-3" style={{color:'rgb(32, 245, 186)'}}>
             {danhSachGheDangDat
               .reduce((tongTien, ghe, index) => {
                 return (tongTien += ghe.giaVe);
@@ -157,33 +195,44 @@ function ChonGhe(props) {
             VND
           </h3>
           <hr></hr>
-          <h3 className="text-xl font-semibold my-3">{thongTinPhim.tenPhim}</h3>
-          <p className="text-left">Địa điểm: {thongTinPhim.diaChi}</p>
-          <p className="text-left my-3">
-            Ngày chiếu: {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu}
+          <h3 className="text-xl font-semibold text-white my-3">{thongTinPhim.tenPhim}</h3>
+          <p className="text-left"><span className="font-semibold text-white">Địa điểm:</span> {thongTinPhim.diaChi}</p>
+          <p className="text-left my-3 border-b-2 border-opacity-25 pb-3">
+          <span className="font-semibold text-white">Suất chiếu: </span> {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu}
           </p>
           <hr></hr>
-          <div className="grid grid-cols-2 my-3">
-            <div className="text-red-400 text-xl">
-              <span className="text-left">Ghế đang chọn: </span>
+          <div className="border-b-2 border-opacity-25 pb-3">
+            <div className="text-xl">
+              <span className="text-left font-semibold" style={{color:'rgb(0, 186, 255)'}}>Ghế đang chọn: </span>
               {_.sortBy(danhSachGheDangDat, ["stt"]).map(
                 (gheDangDat, index) => {
-                  return (
-                    <Fragment key={index}>
-                      <span style={{ color: "#20f5ba" }} key={index}>
+                  if(index === danhSachGheDangDat.length-1){
+                    return (
+                      <Fragment key={index}>
+                      <span style={{ color: "rgb(31, 209, 228)" }} key={index}>
                         {" "}
                         {gheDangDat.stt}
+                      </span>
+                    </Fragment>
+                    )
+                  }
+                  return (
+                    <Fragment key={index}>
+                      <span style={{ color: "rgb(31, 209, 228)" }} key={index}>
+                        {" "}
+                        {gheDangDat.stt},
                       </span>
                     </Fragment>
                   );
                 }
               )}
             </div>
-            <div className="col-span-1 text-right pr-5 text-xl">
-              <span className="text-green-400 ">
-                {danhSachGheDangDat
+            <div className="text-left pr-5 mt-3 text-xl">
+              <span className="text-green-400 font-semibold">Thành tiền:</span>
+              <span className="text-green-400 ml-2">
+              {danhSachGheDangDat
                   .reduce((tongTien, ghe, index) => {
-                    return (tongTien += ghe.giaVe);
+                    return  (tongTien += ghe.giaVe);
                   }, 0)
                   .toLocaleString()}
               </span>
@@ -208,7 +257,8 @@ function ChonGhe(props) {
                 danhSachVe.danhSachVe = danhSachGheDangDat;
                 dispatch(datVeAction(danhSachVe));
               }}
-              className="bg-green-500 text-white w-full text-lg text-center py-2 font-bold cursor-pointer"
+              className="text-white w-full text-lg text-center py-2 font-bold cursor-pointer"
+              style={{background:'linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%)'}}
             >
               ĐẶT VÉ
             </div>
@@ -220,21 +270,16 @@ function ChonGhe(props) {
 }
 
 function KetQua(props) {
-const {userInfo} = useSelector(state => state.QuanLyNguoiDungReducer);
+  const { userInfo } = useSelector((state) => state.QuanLyNguoiDungReducer);
 
-const dispatch = useDispatch();
-useEffect(() => {
+  const dispatch = useDispatch();
+  useEffect(() => {
     dispatch(layThongTinTaiKhoanAction());
-}, [])
-console.log(userInfo);
+  }, []);
+  console.log(userInfo);
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
-        <div className="flex justify-end" style={{fontSize:'1rem'}}>
-          <NavLink onClick={()=> {
-              dispatch({type:CHUYEN_TAB});
-          }} className="border-2 p-2 text-indigo-700 border-indigo-500 rounded" to="/">Trở về trang chủ</NavLink>
-        </div>
         <div className="flex flex-col text-center w-full mb-20">
           <h1 className="text-2xl font-medium title-font mb-4 text-green-400 tracking-widest">
             LỊCH SỬ ĐẶT VÉ
@@ -245,31 +290,39 @@ console.log(userInfo);
           </p>
         </div>
         <div className="flex flex-wrap -m-4">
-          {userInfo.thongTinDatVe?.map((ve,index) => {
-              const ghe = _.head(ve.danhSachGhe);
-              return <div className="p-4 lg:w-1/2" key={index}>
-              <div className="h-full flex sm:flex-row flex-col items-start sm:justify-start justify-center text-center sm:text-left">
-                <img
-                  alt="team"
-                  className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                  src={ve.hinhAnh}
-                />
-                <div className="flex-grow sm:pl-8">
-                  <h2 className="title-font font-medium text-lg font-bold text-blue-500">
-                    {ve.tenPhim}
-                  </h2>
-                  <h3 className="font-semibold mb-3">Giờ chiếu: {moment(ve.ngayDat).format('hh:mm A')} - Ngày chiếu: {moment(ve.ngayDat).format('DD-MM-YYYY')}</h3>
-                  <p className="mb-4">
-                    Địa điểm: {ghe.tenHeThongRap} - {ghe.tenRap}
-                  </p>
-                  <p className="mb-4">
-                    Ghế: {_.sortBy(ve.danhSachGhe,['tenGhe']).map((ghe,index) =>{
-                        return <span key={index}> {ghe.tenGhe}</span>
-                    })}
-                  </p>
+          {userInfo.thongTinDatVe?.map((ve, index) => {
+            const ghe = _.head(ve.danhSachGhe);
+            return (
+              <div className="p-4 lg:w-1/2" key={index}>
+                <div className="h-full flex sm:flex-row flex-col items-start sm:justify-start justify-center text-center sm:text-left">
+                  <img
+                    alt="team"
+                    className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                    src={ve.hinhAnh}
+                  />
+                  <div className="flex-grow sm:pl-8">
+                    <h2 className="title-font font-medium text-lg font-bold text-blue-500">
+                      {ve.tenPhim}
+                    </h2>
+                    <h3 className="font-semibold mb-3">
+                      Giờ chiếu: {moment(ve.ngayDat).format("hh:mm A")} - Ngày
+                      chiếu: {moment(ve.ngayDat).format("DD-MM-YYYY")}
+                    </h3>
+                    <p className="mb-4">
+                      Địa điểm: {ghe.tenHeThongRap} - {ghe.tenRap}
+                    </p>
+                    <p className="mb-4">
+                      Ghế:{" "}
+                      {_.sortBy(ve.danhSachGhe, ["tenGhe"]).map(
+                        (ghe, index) => {
+                          return <span key={index}> {ghe.tenGhe}</span>;
+                        }
+                      )}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            );
           })}
         </div>
       </div>
@@ -284,13 +337,25 @@ function callback(key) {
 }
 
 export default function DatVe(props) {
-  const {activeTab} = useSelector(state => state.QuanLyDatVeReducer);
-  console.log('activeTab',activeTab);
+  const { activeTab, chiTietPhongVe } = useSelector((state) => state.QuanLyDatVeReducer);
+  const { thongTinPhim } = chiTietPhongVe;
+  const operations = <NavLink
+  className="border-2 p-2 text-indigo-700 border-indigo-500 rounded"
+  to="/"
+>
+  Trở về trang chủ
+</NavLink>;
+  console.log("activeTab", activeTab);
   return (
     <div className="pl-5">
-      <Tabs defaultActiveKey="1" 
-      // activeKey={activeTab} 
-      onChange={callback}>
+      <div className="checkoutBackground" style={{backgroundImage:`url(${thongTinPhim.hinhAnh})`,backgroundSize:'cover',backgroundPosition:'center'}}></div>
+      <div className="checkoutTab relative">
+      <Tabs
+        tabBarExtraContent={operations}
+        defaultActiveKey="1"
+        // activeKey={activeTab}
+        onChange={callback}
+      >
         <TabPane tab="01 - CHỌN GHẾ & THANH TOÁN" key="1">
           <ChonGhe {...props} />
         </TabPane>
@@ -298,6 +363,8 @@ export default function DatVe(props) {
           <KetQua {...props} />
         </TabPane>
       </Tabs>
+      </div>
+      <div className="checkoutBlur"></div>
     </div>
   );
 }

@@ -1,67 +1,85 @@
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  
-  /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  /* Position the front and back side */
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-  }
-  
-  /* Style the front side (fallback if image is missing) */
-  .flip-card-front {
-    background-color:transparent;
-    color: black;
-  }
-
-  .ageRating{
-    background-color: #00ac4d;
-    padding: 0 10px;
-    font-size: 15px !important;
-    float: left;
-    font-weight: bold !important;
-    color: white;
+.filmCard {
+  box-shadow: 0 0.5em 0.5em -0.25em rgba(20, 16, 41, 0.06),
+    0 0.125em 0.25em -0.062em rgba(20, 16, 41, 0.06),
+    0 0 0.063em rgba(20, 16, 41, 0.12) !important;
+  -webkit-box-shadow: 0 0.5em 0.5em -0.25em rgba(20, 16, 41, 0.06),
+    0 0.125em 0.25em -0.062em rgba(20, 16, 41, 0.06),
+    0 0 0.063em rgba(20, 16, 41, 0.12) !important;
+  padding: 1.5em 0.9em 1.5em 1em;
 }
-  
-  /* Style the back side */
-  .flip-card-back {
-    background-color: transparent;
-    color: white;
-    transform: rotateY(180deg);
-  }
 
-  .flip-card-back p{
-    background-color: #ffc107;
-  }
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
 
-  .film__overlay{
-    background: linear-gradient(to top,#000,transparent 100%);
-    position: absolute;
-    width: 100%;
-    height: 360px;
-    top: 0;
-    opacity: 0;
-  }
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
 
-  .film__overlay a{
-    position: absolute;
-    top: 45%;
-    left: 40%;
-  }
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
 
-  .film__overlay:hover{
-    opacity: 1;
-  }
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: transparent;
+  color: rgba(20, 16, 41, 0.8);
+}
+
+.ageRating {
+  background-color: #20f5ba !important;
+  padding: 0 10px;
+  padding-top: 2px !important;
+  font-size: 15px !important;
+  float: left;
+  font-weight: bold !important;
+  color: white;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: transparent;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back p {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 170, 1) 0%,
+    rgba(0, 187, 255, 1) 53%,
+    rgba(69, 121, 245, 1) 100%
+  ) !important;
+}
+
+.film__overlay {
+  background: linear-gradient(to top, #000, transparent 100%);
+  position: absolute;
+  width: 91%;
+  height: 360px;
+  top: 5%;
+  opacity: 0;
+  overflow: hidden !important;
+}
+
+.film__overlay a {
+  position: absolute;
+  top: 45%;
+  left: 43%;
+}
+
+.film__overlay:hover {
+  opacity: 1;
+}

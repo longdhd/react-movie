@@ -11,7 +11,12 @@ import "slick-carousel/slick/slick-theme.css";
 import { DOMAIN } from './util/settings/config';
 import * as signalR from '@aspnet/signalr';
 
+//Import đa ngôn ngữ
+import './i18n';
+
+//Kết nối để lắng nghe sự kiện từ server
 export const connection = new signalR.HubConnectionBuilder().withUrl(`${DOMAIN}/DatVeHub` ).configureLogging(signalR.LogLevel.Information).build();
+
 connection.start().then(() => {
   ReactDOM.render(
     <Provider store={store} > 

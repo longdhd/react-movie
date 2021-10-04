@@ -9,6 +9,7 @@
   position: absolute;
   bottom: 60px;
   left: 48%;
+  z-index: 9 !important;
 }
 
 .button__bar li {
@@ -31,9 +32,19 @@
 }
 
 .button__bar li.slick-active button {
-  background-color: #ffc107 !important;
+  background-color: #00baff !important;
 }
 
 .button__bar li button:focus{
   outline: none !important;
+}
+
+.carouselBlur{
+  background: linear-gradient(to top, rgba(32,32,54,1.0), transparent 100%);
+  top: 0;
+  left: 0;
+  height: 85%;
+  width: 100%;
+  position: absolute;
+  z-index: 0 !important;
 }

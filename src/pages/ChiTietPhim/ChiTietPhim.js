@@ -23,7 +23,7 @@ export default function ChiTietPhim(props) {
 
   const { tabPosition } = state;
 
-  const getRandomInt = (min, max) => {
+  const laySoNgauNhien = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
@@ -35,7 +35,7 @@ export default function ChiTietPhim(props) {
   }, []);
 
   return (
-    <div className="mt-0">
+    <div className="mt-0 detailPage" style={{color:'rgb(32, 32, 54)'}}>
       <div
         style={{
           backgroundImage: `url(${filmDetail.hinhAnh})`,
@@ -104,14 +104,14 @@ export default function ChiTietPhim(props) {
               <Rate disabled defaultValue={filmDetail.danhGia / 2} />
             </div>
             <div className="text-sm">
-              {getRandomInt(100, 1000)} người đánh giá
+              {laySoNgauNhien(100, 1000)} người đánh giá
             </div>
           </div>
         </div>
       </div>
       <div className="darkBackground"></div>
-      <div className="content text-white" id="contentNav">
-        <ul className="nav nav-pills font-bold text-xl border-b">
+      <div className="content text-white mt-36" id="contentNav">
+        <ul className="nav navFilmDetail nav-pills font-bold text-xl">
           <li className="nav-item">
             <a
               className="nav-link contentNavLink active"
@@ -201,7 +201,7 @@ export default function ChiTietPhim(props) {
                         return (
                           <TabPane
                             tab={
-                              <div className="border-b-2 pb-4">
+                              <div className="border-b-2 border-opacity-50 pb-4">
                                 <div className="text-left flex flex-row">
                                   <div>
                                     <img
@@ -211,7 +211,7 @@ export default function ChiTietPhim(props) {
                                   </div>
                                   <div className="ml-3">
                                     <p
-                                      style={{ color: "#e41a1a" }}
+                                      style={{ color: "rgb(38, 198, 218)" }}
                                       className="font-semibold"
                                     >
                                       {cumRap.tenCumRap}
@@ -231,8 +231,8 @@ export default function ChiTietPhim(props) {
                                       return (
                                         <NavLink
                                           style={{
-                                            backgroundImage:
-                                              "linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%)",
+                                            background:
+                                              "rgb(38, 198, 218)",
                                           }}
                                           className="mr-5 mt-5 px-2 text-lg text-white fond-bold rounded"
                                           to={`/checkout/${lichChieu.maLichChieu}`}
@@ -257,7 +257,7 @@ export default function ChiTietPhim(props) {
               })}
             </Tabs>
           </div>
-          <div className="tab-pane container px-44 fade" id="review">
+          <div className="tab-pane container px-32 fade" id="review">
             <div className="row ">
               <div className="col-12 mt-14 flex flex-row rounded-md reviewInput">
                 <img
@@ -267,7 +267,7 @@ export default function ChiTietPhim(props) {
                 ></img>
                 <div
                   className="form-group mt-1 mx-3"
-                  style={{ width: "300px" }}
+                  style={{ width: "420px" }}
                 >
                   <input
                     className="form-control border-0"
