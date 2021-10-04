@@ -22,7 +22,7 @@
 }
 
 .ghe {
-    border: 3px solid gray;
+    border: 3px solid #fff;
     background: #fff;
     color: black;
     width: 45px;
@@ -34,7 +34,7 @@
   }
   
   .gheDaDat {
-    border: 3px solid red;
+    border: 3px solid red !important;
     background: red !important;
     color: #000;
     cursor: no-drop !important;

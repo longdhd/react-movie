@@ -41,7 +41,7 @@ export default function HomeCarousel(props) {
   return (
     <Fragment>
       <div>
-      <Slider {...settings} style={{height: "760px", overflow: 'hidden'}}>
+      <Slider {...settings} style={{height: "850px", overflow: 'hidden'}}>
         {renderImg()}
       </Slider>
     </div>

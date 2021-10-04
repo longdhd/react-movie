@@ -7,7 +7,7 @@ import {
   datVeAction,
   layDanhSachPhongVeAction,
 } from "../../Redux/action/QuanLyDatVeAction";
-import { CloseOutlined, UserOutlined } from "@ant-design/icons";
+import { CloseOutlined, RollbackOutlined, UserOutlined } from "@ant-design/icons";
 import { CHUYEN_TAB, DAT_GHE, DAT_VE } from "../../Redux/types/QuanLyDatVeType";
 import { DanhSachVe } from "../../_core/models/DanhSachVe";
 import _ from "lodash";
@@ -340,14 +340,14 @@ export default function DatVe(props) {
   const { activeTab, chiTietPhongVe } = useSelector((state) => state.QuanLyDatVeReducer);
   const { thongTinPhim } = chiTietPhongVe;
   const operations = <NavLink
-  className="border-2 p-2 text-indigo-700 border-indigo-500 rounded"
+  className="p-2 text-white pr-5 text-lg relative"
   to="/"
 >
-  Trở về trang chủ
+  Trang chủ <RollbackOutlined style={{fontSize:'1.2rem',position:'absolute',bottom:9}}/>
 </NavLink>;
   console.log("activeTab", activeTab);
   return (
-    <div className="pl-5">
+    <div className="pl-">
       <div className="checkoutBackground" style={{backgroundImage:`url(${thongTinPhim.hinhAnh})`,backgroundSize:'cover',backgroundPosition:'center'}}></div>
       <div className="checkoutTab relative">
       <Tabs
@@ -355,6 +355,7 @@ export default function DatVe(props) {
         defaultActiveKey="1"
         // activeKey={activeTab}
         onChange={callback}
+        className="text-white font-semibold"
       >
         <TabPane tab="01 - CHỌN GHẾ & THANH TOÁN" key="1">
           <ChonGhe {...props} />
