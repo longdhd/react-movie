@@ -13,6 +13,12 @@ import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
 import Loading from "./components/Loading/Loading";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
+import AdminTemplate from "./templates/AdminTemplate/AdminTemplate";
+import Dashboard from "./pages/Admin/Dashboard/Dashboard";
+import Films from "./pages/Admin/Films/Films";
+import AddNew from "./pages/Admin/Films/AddNew/AddNew";
+import Showtime from "./pages/Admin/Showtime/Showtime";
+import Edit from "./pages/Admin/Films/Edit/Edit";
 
 const DatVeTemplateLazy = lazy(()=> import("./templates/DatVeTemplate/DatVeTemplate"));
 
@@ -30,6 +36,11 @@ function App() {
         <UserTemplate path="/login" exact Component={LogIn}/>
         <UserTemplate path="/register" exact Component={Register}/>
         <HomeTemplate path="/profile" exact Component={Profile}/>
+        <AdminTemplate path="/admin" exact Component={Dashboard}/>
+        <AdminTemplate path="/admin/films" exact Component={Films}/>
+        <AdminTemplate path="/admin/films/addnew" exact Component={AddNew}/>
+        <AdminTemplate path="/admin/films/edit/:id" exact Component={Edit}/>
+        <AdminTemplate path="/admin/showtime" exact Component={Showtime}/>
         <Suspense fallback={<h1>Loading...</h1>}>
           <DatVeTemplateLazy path="/checkout/:id" exact Component={DatVe}/>
         </Suspense>

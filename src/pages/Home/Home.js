@@ -21,7 +21,7 @@ export default function Home() {
   // };
 
   useEffect(() => {
-    dispatch(layDanhSachPhimAction);
+    dispatch(layDanhSachPhimAction());
     dispatch(layLichChieuAction);
     // console.log('heThongRapChieu',heThongRapChieu);
   }, [])
