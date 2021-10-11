@@ -40,7 +40,7 @@ function App() {
         <AdminTemplate path="/admin/films" exact Component={Films}/>
         <AdminTemplate path="/admin/films/addnew" exact Component={AddNew}/>
         <AdminTemplate path="/admin/films/edit/:id" exact Component={Edit}/>
-        <AdminTemplate path="/admin/showtime" exact Component={Showtime}/>
+        <AdminTemplate path="/admin/films/showtime/:id/:tenphim" exact Component={Showtime}/>
         <Suspense fallback={<h1>Loading...</h1>}>
           <DatVeTemplateLazy path="/checkout/:id" exact Component={DatVe}/>
         </Suspense>

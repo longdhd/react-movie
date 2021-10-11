@@ -2,10 +2,10 @@ import { history } from "../../App";
 import { qLPhimService } from "../../services/QuanLyPhimService";
 import { SET_DANH_SACH_PHIM, SET_THONG_TIN_PHIM } from "../types/QuanLyPhimType";
 
-export const layDanhSachPhimAction = () => {
+export const layDanhSachPhimAction = (tenPhim='') => {
   return async (dispatch) => {
     try {
-      const result = await qLPhimService.layDanhSachPhim();
+      const result = await qLPhimService.layDanhSachPhim(tenPhim);
   
       dispatch({
         type: SET_DANH_SACH_PHIM,
@@ -46,11 +46,22 @@ export const capNhatPhimUploadAction = (formData) => {
   return async (dispatch) => {
     try {
       const result = await qLPhimService.capNhatPhimUpload(formData);
-      console.log('result',result.data.content);
       alert('Cập nhật phim thành công!');
       dispatch(layDanhSachPhimAction());
       history.push('/admin/films');
       
+    } catch (error) {
+      console.log('error',error.response?.data);
+    }
+  }
+}
+
+export const xoaPhimAction = (maPhim) => {
+  return async (dispatch) => {
+    try {
+      const result = await qLPhimService.xoaPhim(maPhim);
+      alert('Xoá phim thành công!');
+      dispatch(layDanhSachPhimAction());
     } catch (error) {
       console.log('error',error.response?.data);
     }
