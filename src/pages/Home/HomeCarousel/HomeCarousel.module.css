@@ -1,0 +1,23 @@
+.sliderBanner {
+    height: 620px;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+    .sliderBanner {
+        height: 360px;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .sliderBanner {
+        height: 207px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .sliderBanner {
+        height: 188px;
+    }
+  }

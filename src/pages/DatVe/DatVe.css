@@ -1,4 +1,4 @@
-.checkoutBackground{
+.checkoutBackground {
   position: absolute;
   height: 980px;
   width: 100%;
@@ -7,8 +7,8 @@
   filter: blur(15px);
 }
 
-.checkoutBlur{
-  background: linear-gradient(to top, rgba(32,32,54,1.0), transparent 100%);
+.checkoutBlur {
+  background: linear-gradient(to top, rgba(32, 32, 54, 1), transparent 100%);
   top: 0;
   left: 0;
   height: 107%;
@@ -17,54 +17,70 @@
   z-index: 0 !important;
 }
 
-.checkoutTab{
+.checkoutTab {
   z-index: 99 !important;
 }
 
 .ghe {
-    border: 3px solid #fff;
-    background: #fff;
-    color: black;
-    width: 45px;
-    height: 35px;
-    font-size: 12px;
-    margin-left: 2%;
-    margin-bottom: 1%;
-    border-radius: 5px;
+  border: 3px solid #fff;
+  background: #fff;
+  color: black;
+  width: 45px;
+  height: 35px;
+  font-size: 12px;
+  margin-left: 1.5%;
+  margin-bottom: 1%;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .ghe {
+    width: 35px !important;
+    height: 25px !important;
+    font-size: 11px;
   }
-  
   .gheDaDat {
-    border: 3px solid red !important;
-    background: red !important;
-    color: #000;
-    cursor: no-drop !important;
-    border-radius: 5px;
-    width: 45px;
-    height: 35px;
+    width: 35px !important;
+    height: 25px !important;
   }
-  
-  .gheDangDat {
-    background: #20f5ba !important;
-    border: 3px solid #20f5ba !important;
-    color: #000;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 45px;
-    height: 35px;
+  .gheDangDat{
+    width: 35px !important;
+    height: 25px !important;
   }
-  
-  .gheVip{
-    background: orange;
-    border: 3px solid orange;
-  }
+}
 
-  .gheDatThanhCong{
-    background: purple !important;
-    border: 3px solid purple !important;
-  }
+.gheDaDat {
+  border: 3px solid red !important;
+  background: red !important;
+  color: #000;
+  cursor: no-drop !important;
+  border-radius: 5px;
+  width: 45px;
+  height: 35px;
+}
 
-  .gheKhachDangDat{
-    background-color: pink !important;
-    border: 3px solid pink !important;
-    cursor: no-drop;
-  }
+.gheDangDat {
+  background: #20f5ba !important;
+  border: 3px solid #20f5ba !important;
+  color: #000;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 45px;
+  height: 35px;
+}
+
+.gheVip {
+  background: orange;
+  border: 3px solid orange;
+}
+
+.gheDatThanhCong {
+  background: purple !important;
+  border: 3px solid purple !important;
+}
+
+.gheKhachDangDat {
+  background-color: pink !important;
+  border: 3px solid pink !important;
+  cursor: no-drop;
+}

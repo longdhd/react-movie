@@ -27,6 +27,12 @@
     max-width: 1080px;
 }
 
+@media only screen and (max-width: 768px) {
+    .movieRating{
+        opacity: 0 !important;
+    }
+}
+
 .playIcon{
     position: absolute;
     color: white;
@@ -44,7 +50,7 @@
 .ageRating{
     background-color: #00ac4d;
     padding: 0 7px;
-    font-size: 15px !important;
+    font-size: 19px !important;
     float: left;
     font-weight: bold !important;
 }
@@ -70,6 +76,12 @@
     top: 64%;
     width: 870px;
     height: 700px !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .content{
+        left: 22%;
+    }
 }
 
 ul.navFilmDetail li .nav-link.active{
@@ -162,9 +174,19 @@ ul.navFilmDetail li .nav-link{
     border: 1px solid rgba(222, 226, 230, .25) !important;
 }
 
-.reviewInput{
+.reviewTab{
     height: 50px;
     max-width: 720px;
     background-color: #fff;
     width: 100%;
 }
+
+.reviewInput{
+    width: 480px !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .reviewInput{
+        width: 280px !important;
+    }
+  }

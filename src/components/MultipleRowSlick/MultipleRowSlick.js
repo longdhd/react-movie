@@ -31,7 +31,6 @@ function SamplePrevArrow(props) {
 }
 
 export default class MultipleRowSlick extends Component {
-
   renderFilmDangChieu = () => {
     let filmDangChieu = _.filter(this.props.arrFilm, ["dangChieu", true]);
     return filmDangChieu.map((item, index) => {
@@ -67,10 +66,35 @@ export default class MultipleRowSlick extends Component {
       variableWidth: true,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesPerRow: 1,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+            slidesPerRow: 1,
+          },
+        },
+        {
+          breakpoint: 414,
+          settings: {
+            slidesToShow: 1,
+            slidesPerRow: 1,
+            rows: 2,
+            centerPadding: "0px",
+          },
+        }
+      ],
     };
     return (
       <Fragment>
-        <ul class="nav navOnAir nav-pills justify-center pt-5 font-semibold text-lg">
+        <ul class="nav navOnAir nav-pills justify-center pt-5 font-semibold md:text-lg">
           <li class="nav-item">
             <a class="nav-link active" data-toggle="pill" href="#dangChieu">
               Phim Đang Chiếu

@@ -16,14 +16,14 @@ export default function HomePromotion() {
       >
         ƯU ĐÃI ĐẶC BIỆT
       </h1>
-      <div className="flex justify-center w-screen max-h-screen py-5 px-10">
+      <div className="flex justify-center w-screen md:max-h-screen py-24 px-10">
         {/* Resice the preview panel to check the responsiveness */}
         {/* Component Start */}
-        <div className="grid xl:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-2 max-w-6xl">
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-2 max-w-6xl">
           {/* Tile 1 */}
           <div className="promotionTile flex flex-col bg-gray-200 rounded-lg p-4 m-2">
             <div
-              className="h-40 bg-gray-400 rounded-lg"
+              className="md:h-40 bg-gray-400 rounded-lg"
               style={{
                 backgroundImage:
                   "url(https://www.citypassguide.com/media/slideshow/cinema.jpg)",
@@ -32,13 +32,13 @@ export default function HomePromotion() {
                 backgroundPosition: "center",
               }}
             />
-            <div className="flex flex-col items-start mt-4">
-              <h4 className="text-xl font-semibold text-white">
-                Xem tất cả các bộ phim của chúng tôi chỉ từ £ 9,99 / tháng
+            <div className="flex flex-col items-start md:mt-4">
+              <h4 className="md:text-xl font-semibold text-white">
+                Xem tất cả các bộ phim của chúng tôi chỉ từ 999K / tháng
               </h4>
               <p className="text-md">
                 Giờ đây, bạn có thể xem tất cả các bộ phim của chúng tôi, bao
-                nhiêu lần tùy thích, chỉ từ £ 9,99 một tháng *.
+                nhiêu lần tùy thích, chỉ từ 999K một tháng *.
               </p>
               <p className="text-md">
                 Ngoài ra, myLIMITLESS hiện có sẵn với thời hạn giảm tối thiểu 3
@@ -56,7 +56,7 @@ export default function HomePromotion() {
           {/* Tile 2 */}
           <div className="promotionTile flex flex-col bg-gray-200 rounded-lg p-4 m-2">
             <div
-              className="h-40 bg-gray-400 rounded-lg"
+              className="md:h-40 bg-gray-400 rounded-lg"
               style={{
                 backgroundImage:
                   "url(https://ichef.bbci.co.uk/news/976/cpsprodpb/F7BE/production/_105322436_gettyimages-843061956.jpg)",
@@ -66,12 +66,12 @@ export default function HomePromotion() {
               }}
             />
             <div className="flex flex-col items-start mt-4">
-              <h4 className="text-xl font-semibold text-white">VÉ CINEMA SIÊU TIẾT KIỆM</h4>
+              <h4 className="md:text-xl font-semibold text-white">VÉ CINEMA SIÊU TIẾT KIỆM</h4>
               <p className="text-md">
               Trải nghiệm niềm vui điện ảnh cho ít người hơn với tư cách là thành viên myCINEMA.
               </p>
               <p className="text-md">
-              Vé myCINEMA Saver có sẵn vào các buổi chiếu được chọn vào Thứ Ba-Chủ Nhật và cả ngày vào Thứ Hai của Thành viên, với giá chỉ từ £ 6 *.
+              Vé myCINEMA Saver có sẵn vào các buổi chiếu được chọn vào Thứ Ba-Chủ Nhật và cả ngày vào Thứ Hai của Thành viên, với giá chỉ từ 699K *.
               </p>
               <p className="text-md">
               Đăng ký miễn phí ngay hôm nay và tiết kiệm tiền với myCINEMA. 
@@ -87,7 +87,7 @@ export default function HomePromotion() {
           {/* Tile 3 */}
           <div className="promotionTile flex flex-col bg-gray-200 rounded-lg p-4 m-2">
             <div
-              className="h-40 bg-gray-400 rounded-lg"
+              className="md:h-40 bg-gray-400 rounded-lg"
               style={{
                 backgroundImage:
                   "url(https://www.duluthchildrensmuseum.org/webstore/wp-content/uploads/2019/11/Giftcard_icon-01_1024x1024.jpg)",
@@ -97,7 +97,7 @@ export default function HomePromotion() {
               }}
             />
             <div className="flex flex-col items-start mt-4">
-              <h4 className="text-xl font-semibold text-white">myCINEMA Gift Card</h4>
+              <h4 className="md:text-xl font-semibold text-white">myCINEMA Gift Card</h4>
               <p className="text-md">
                 Cơ hội vô tận.
               </p>

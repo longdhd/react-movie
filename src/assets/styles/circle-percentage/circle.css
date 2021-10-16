@@ -75,7 +75,7 @@
   /* width: 5em;
   line-height: 5em;
   font-size: 0.2em; */
-  color: #fbbd61;
+  color: #fadb14;
   display: block;
   text-align: center;
   white-space: nowrap;
@@ -869,7 +869,7 @@
   color: #5fd400;
 }
 .c100.orange .bar, .c100.orange .fill {
-  border-color: #fbbd61 !important;
+  border-color: #fadb14 !important;
 }
 .c100.orange:hover > span {
   color: #dd9d22;

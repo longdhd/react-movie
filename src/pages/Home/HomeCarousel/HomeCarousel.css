@@ -43,8 +43,35 @@
   background: linear-gradient(to top, rgba(32,32,54,1.0), transparent 100%);
   top: 0;
   left: 0;
-  height: 94%;
+  height: 70%;
   width: 100%;
   position: absolute;
   z-index: 0 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .carouselBlur {
+      height: 36%;
+  }
+  .button__bar{
+    bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .carouselBlur {
+      height: 29%;
+  }
+  .button__bar{
+    opacity: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .carouselBlur {
+      height: 29%;
+  }
+  .button__bar{
+    opacity: 0 !important;
+  }
 }

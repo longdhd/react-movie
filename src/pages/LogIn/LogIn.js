@@ -2,14 +2,13 @@ import React from 'react';
 import {useFormik} from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { dangNhapAction } from '../../Redux/action/QuanLyNguoiDungAction';
+import * as Yup from 'yup';
 
 export default function LogIn() {
 
     const dispatch = useDispatch();
 
     const {userLogin} = useSelector(state => state.QuanLyNguoiDungReducer);
-
-    console.log('userLogin',userLogin);
 
     const formik = useFormik({
 
@@ -43,7 +42,7 @@ export default function LogIn() {
         className="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
   xl:text-bold"
       >
-        Log in
+        Sign in
       </h2>
       <div className="mt-12">
         <div>
@@ -92,9 +91,9 @@ export default function LogIn() {
           </div>
         </div>
         <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-          Don't have an account ?{" "}
+          Chưa có tài khoản ?{" "}
           <a className="cursor-pointer text-indigo-600 hover:text-indigo-800">
-            Sign up
+            Đăng ký
           </a>
         </div>
       </div>

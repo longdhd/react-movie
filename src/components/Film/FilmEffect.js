@@ -46,13 +46,13 @@ export default function FilmEffect(props) {
             </div>
           </div>
         </div>
-        <div className="bg-gray-900 px-2 rounded absolute flex top-10 left-2/4 bg-opacity-75">
-          <span className="text-white font-semibold text-lg">
+        <div className="bg-gray-900 px-2 rounded absolute flex top-10 md:left-2/4 left-2/4 bg-opacity-75">
+          <span className="text-white font-semibold md:text-lg">
             {phim.danhGia}/10
           </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 mt-1 ml-1"
+            className="md:h-5 md:w-5 h-4 w-4 mt-1 ml-1"
             style={{ color: "#ffc107" }}
             viewBox="0 0 20 20"
             fill="currentColor"

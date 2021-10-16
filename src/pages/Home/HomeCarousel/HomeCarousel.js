@@ -4,6 +4,7 @@ import React, { Fragment, useEffect } from "react";
 // import "owl.carousel/dist/assets/owl.theme.default.css";
 import Slider from "react-slick";
 import './HomeCarousel.css';
+import styleSlick from './HomeCarousel.module.css'
 import { useSelector, useDispatch } from "react-redux";
 import { getCarouselAction } from "../../../Redux/action/CarouselAction";
 
@@ -41,7 +42,7 @@ export default function HomeCarousel(props) {
   return (
     <Fragment>
       <div>
-      <Slider {...settings} style={{height: "850px", overflow: 'hidden'}}>
+      <Slider {...settings} className={styleSlick.sliderBanner}>
         {renderImg()}
       </Slider>
     </div>

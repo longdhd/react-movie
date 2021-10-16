@@ -40,7 +40,7 @@ export default function Header(props) {
               scroll ? "text-black" : "text-white"
             }`}
           >
-          <span>{t("Sign up")}</span>
+            <span>{t("Sign up")}</span>
           </button>
           <button
             onClick={() => {
@@ -51,7 +51,16 @@ export default function Header(props) {
             }`}
           >
             {t("Sign in")}
-            <span><LoginOutlined style ={{position:'absolute',bottom:30, marginLeft:5, fontSize:16}} /></span>
+            <span>
+              <LoginOutlined
+                style={{
+                  position: "absolute",
+                  bottom: 30,
+                  marginLeft: 5,
+                  fontSize: 16,
+                }}
+              />
+            </span>
           </button>
         </Fragment>
       );
@@ -73,7 +82,7 @@ export default function Header(props) {
           onClick={() => {
             localStorage.removeItem(USER_LOGIN);
             localStorage.removeItem(TOKEN);
-            history.push('/');
+            history.push("/");
             window.location.reload();
           }}
           className={`self-center py-3 p-8 font-semibold rounded bg-violet-600 text-coolGray-50 ${
@@ -81,7 +90,16 @@ export default function Header(props) {
           }`}
         >
           <span>{t("Sign out")}</span>
-          <span><LogoutOutlined style ={{position:'absolute',bottom:30, marginLeft:5, fontSize:16}} /></span>
+          <span>
+            <LogoutOutlined
+              style={{
+                position: "absolute",
+                bottom: 30,
+                marginLeft: 5,
+                fontSize: 16,
+              }}
+            />
+          </span>
         </button>
       </Fragment>
     );
@@ -166,7 +184,7 @@ export default function Header(props) {
             <>
               <Select
                 defaultValue="vie"
-                style={{ width: 150, fontSize: "1rem", marginLeft:20}}
+                style={{ width: 150, fontSize: "1rem", marginLeft: 20 }}
                 bordered={false}
                 className={`${scroll ? "text-black" : "text-white"}`}
                 onChange={handleChange}

@@ -19,6 +19,7 @@ import Films from "./pages/Admin/Films/Films";
 import AddNew from "./pages/Admin/Films/AddNew/AddNew";
 import Showtime from "./pages/Admin/Showtime/Showtime";
 import Edit from "./pages/Admin/Films/Edit/Edit";
+import RegisterFormik from "./pages/Register/RegisterFormik";
 
 const DatVeTemplateLazy = lazy(()=> import("./templates/DatVeTemplate/DatVeTemplate"));
 
@@ -34,7 +35,7 @@ function App() {
         <HomeTemplate path="/contact" exact Component={Contact}/>
         <HomeTemplate path="/detail/:id" exact Component={ChiTietPhim}/>
         <UserTemplate path="/login" exact Component={LogIn}/>
-        <UserTemplate path="/register" exact Component={Register}/>
+        <UserTemplate path="/register" exact Component={RegisterFormik}/>
         <HomeTemplate path="/profile" exact Component={Profile}/>
         <AdminTemplate path="/admin" exact Component={Dashboard}/>
         <AdminTemplate path="/admin/films" exact Component={Films}/>

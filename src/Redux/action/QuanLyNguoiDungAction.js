@@ -38,3 +38,17 @@ export const layThongTinTaiKhoanAction = () => {
     }
   };
 };
+
+export const dangKyAction = (thongTinDangKy) => {
+  return async (dispatch) => {
+    try {
+      const result = await qLNguoiDungService.dangKy(thongTinDangKy);
+      if (result.data.statusCode === 200) {
+        alert('Đăng ký thành công!');
+        history.push('/login');
+      }
+    } catch (error) {
+      console.log("error", error.response?.data);
+    }
+  };
+}

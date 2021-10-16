@@ -128,7 +128,7 @@ function ChonGhe(props) {
   
   <div className="min-h-screen" style={{color:'#fff'}}>
       <div className="grid grid-cols-12">
-        <div className="col-span-9">
+        <div className="lg:col-span-9 md:col-span-12">
           <div className="flex flex-col items-center">
             <div className="text-black-800 font-bold text-2xl mb-1 uppercase">
               Màn hình
@@ -139,9 +139,9 @@ function ChonGhe(props) {
             ></div>
             <div className={`${style["trapezoid"]}`}></div>
           </div>
-          <div className="pl-32 py-5">{renderGhe()}</div>
+          <div className="py-5">{renderGhe()}</div>
           <div className="mt-5 flex justify-center">
-            <table className="table w-2/3">
+            <table className="table w-2/3 lg:text-sm text-xs text-center">
               <thead>
                 <tr>
                   <th>Ghế trống</th>
@@ -155,10 +155,10 @@ function ChonGhe(props) {
               <tbody>
                 <tr>
                   <td>
-                    <button className="ghe ml-2"></button>
+                    <button className="ghe"></button>
                   </td>
                   <td>
-                    <button className="gheDaDat ml-3">
+                    <button className="gheDaDat">
                       <CloseOutlined
                         style={{ color: "white", fontSize: "1.2rem" }}
                       />
@@ -168,25 +168,25 @@ function ChonGhe(props) {
                     <button className="ghe gheVip"></button>
                   </td>
                   <td>
-                    <button className="gheDangDat ml-4"></button>
+                    <button className="gheDangDat ml-1"></button>
                   </td>
                   <td>
-                    <button className="ghe gheDatThanhCong ml-5">
+                    <button className="ghe gheDatThanhCong ml-1">
                       <UserOutlined
                         style={{ color: "white", fontSize: "1.2rem" }}
                       />
                     </button>
                   </td>
                   <td>
-                    <button className="ghe gheKhachDangDat ml-5"></button>
+                    <button className="ghe gheKhachDangDat ml-2"></button>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div className="col-span-3 border-l-2 border-opacity-25 pl-3">
-          <h3 className="text-center text-2xl my-3" style={{color:'rgb(32, 245, 186)'}}>
+        <div className="lg:col-span-3 md:col-span-12 lg:border-l-2 md:border-t-2 border-opacity-25 pl-3">
+          <h3 className="text-center text-2xl lg:block md:hidden my-3" style={{color:'rgb(32, 245, 186)'}}>
             {danhSachGheDangDat
               .reduce((tongTien, ghe, index) => {
                 return (tongTien += ghe.giaVe);
@@ -195,7 +195,7 @@ function ChonGhe(props) {
             VND
           </h3>
           <hr></hr>
-          <h3 className="text-xl font-semibold text-white my-3">{thongTinPhim.tenPhim}</h3>
+          <h3 className="text-xl font-semibold capitalize text-white my-3">{thongTinPhim.tenPhim}</h3>
           <p className="text-left"><span className="font-semibold text-white">Địa điểm:</span> {thongTinPhim.diaChi}</p>
           <p className="text-left my-3 border-b-2 border-opacity-25 pb-3">
           <span className="font-semibold text-white">Suất chiếu: </span> {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu}
@@ -239,17 +239,17 @@ function ChonGhe(props) {
             </div>
           </div>
           <hr></hr>
-          <div className="my-3">
+          <div className="my-3 lg:block md:hidden">
             <span>Email:</span>
             <br />
             <i>{userLogin.email}</i>
           </div>
-          <div className="my-3">
+          <div className="my-3 lg:block md:hidden">
             <span>Số điện thoại:</span>
             <br />
             <i>{userLogin.soDT}</i>
           </div>
-          <div className="mb-0 h-1/2 flex flex-col justify-end">
+          <div className="mb-0 lg:h-1/3 md:h-1/4 flex flex-col justify-end">
             <div
               onClick={() => {
                 const danhSachVe = new DanhSachVe();
@@ -257,7 +257,7 @@ function ChonGhe(props) {
                 danhSachVe.danhSachVe = danhSachGheDangDat;
                 dispatch(datVeAction(danhSachVe));
               }}
-              className="text-white w-full text-lg text-center py-2 font-bold cursor-pointer"
+              className="text-white w-11/12 text-lg text-center py-2 font-bold cursor-pointer"
               style={{background:'linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%)'}}
             >
               ĐẶT VÉ
@@ -284,7 +284,7 @@ function KetQua(props) {
           <h1 className="text-2xl font-medium title-font mb-4 text-green-400 tracking-widest">
             LỊCH SỬ ĐẶT VÉ
           </h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-white">
             Cám ơn Quý khách đã tin tưởng CINEMA. Vui lòng kiểm tra thông tin vé
             đã đặt bên dưới.
           </p>

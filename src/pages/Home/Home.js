@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <div>
       <HomeCarousel />
-      <div style={{ background: "url(https://www.orionprotocol.io/hubfs/Orion_April2020/Images/f-bg.png)",backgroundSize:'cover', height:'980px' }}>
+      <div style={{background: "url(https://www.orionprotocol.io/hubfs/Orion_April2020/Images/f-bg.png)",backgroundSize:'cover', height:'100%' }}>
         <HomePromotion />
       </div>
       <MultipleRowSlick arrFilm={arrFilm} />
@@ -37,8 +37,8 @@ export default function Home() {
         <div style={{background:'url(https://cdn2.hubspot.net/hubfs/6976471/Orion_April2020/Images/features-top.png) no-repeat', backgroundSize:'cover' ,height:'224px',width:'100%',position:'absolute',top:'-22%'}}>
         </div>
       </div>
-      <div style={{background:"rgba(32,32,54,1.0)",marginTop:'200px'}}> 
-        <div className="container mx-36 py-24">
+      <div style={{background:"rgba(32,32,54,1.0)",marginTop:'200px'}} id="homeMenu"> 
+        <div className=" lg:container lg:mx-24 py-24">
           <HomeMenu heThongRapChieu={heThongRapChieu} />
         </div>
       </div>

@@ -2,6 +2,7 @@ import { Fragment, useEffect } from "react";
 import { Route } from "react-router";
 import Footer from "./layout/Footer/Footer";
 import Header from "./layout/Header/Header";
+import ResponsiveHeader from "./layout/Header/ResponsiveHeader";
 
 export const HomeTemplate = (props) => { //path,exact,component
     
@@ -14,7 +15,7 @@ export const HomeTemplate = (props) => { //path,exact,component
     return <Route {...restProps} render={(propsRoute)=>{ //props.location,props.history,props.match
 
         return <Fragment>
-            <Header {...propsRoute}/>
+            <ResponsiveHeader {...propsRoute}/>
 
             <Component {...propsRoute}/>
 

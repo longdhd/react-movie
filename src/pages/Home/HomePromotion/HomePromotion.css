@@ -1,8 +1,8 @@
 h1.promotionHeading::before {
   content: "";
   position: absolute;
-  bottom: -80px;
-  width: 80px;
+  bottom: 175px;
+  width: 120px;
   height: 5px;
   border: none;
   border-top-color: currentcolor;
@@ -13,7 +13,31 @@ h1.promotionHeading::before {
   border-bottom-width: medium;
   border-bottom: solid 1px #1890ff;
   border-top: solid 1px #1890ff;
-  left: calc((100% - 80px) / 2);
+  left: calc((100% - 120px) / 2);
+}
+
+@media only screen and (max-width: 768px) {
+  h1.promotionHeading::before {
+    bottom: 530px;
+    width: 120px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  h1.promotionHeading{
+    font-size: 20px !important;
+  }
+  h1.promotionHeading::before {
+    bottom: 410px;
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  h1.promotionHeading::before {
+    bottom: 360px;
+    width: 100px;
+  }
 }
 
 .promotionTile {
