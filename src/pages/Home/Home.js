@@ -38,7 +38,7 @@ export default function Home() {
         </div>
       </div>
       <div style={{background:"rgba(32,32,54,1.0)",marginTop:'200px'}} id="homeMenu"> 
-        <div className=" lg:container lg:mx-24 py-24">
+        <div className="lg:container lg:mx-24 py-24">
           <HomeMenu heThongRapChieu={heThongRapChieu} />
         </div>
       </div>

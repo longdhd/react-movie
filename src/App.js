@@ -20,6 +20,9 @@ import AddNew from "./pages/Admin/Films/AddNew/AddNew";
 import Showtime from "./pages/Admin/Showtime/Showtime";
 import Edit from "./pages/Admin/Films/Edit/Edit";
 import RegisterFormik from "./pages/Register/RegisterFormik";
+import User from "./pages/Admin/User/User";
+import AddUser from "./pages/Admin/User/addUser/AddUser";
+import EditUser from "./pages/Admin/User/editUser/EditUser";
 
 const DatVeTemplateLazy = lazy(()=> import("./templates/DatVeTemplate/DatVeTemplate"));
 
@@ -36,8 +39,11 @@ function App() {
         <HomeTemplate path="/detail/:id" exact Component={ChiTietPhim}/>
         <UserTemplate path="/login" exact Component={LogIn}/>
         <UserTemplate path="/register" exact Component={RegisterFormik}/>
-        <HomeTemplate path="/profile" exact Component={Profile}/>
+        <Route path="/profile"><Profile></Profile></Route>
         <AdminTemplate path="/admin" exact Component={Dashboard}/>
+        <AdminTemplate path="/admin/user" exact Component={User}/>
+        <AdminTemplate path="/admin/user/addnew" exact Component={AddUser}/>
+        <AdminTemplate path="/admin/user/edit/:id" exact Component={EditUser}/>
         <AdminTemplate path="/admin/films" exact Component={Films}/>
         <AdminTemplate path="/admin/films/addnew" exact Component={AddNew}/>
         <AdminTemplate path="/admin/films/edit/:id" exact Component={Edit}/>

@@ -39,9 +39,9 @@ function AdminTemplate(props) {
 //   }
 
   const operations = <Fragment>
-      {!_.isEmpty(userLogin) ? <Fragment> <button onClick={() => {
+      {!_.isEmpty(userLogin) ? <div className="text-white"> <button onClick={() => {
           history.push('/profile')
-      }}><div style={{width: 50, height: 50, display: 'flex',justifyContent:'center',alignItems:'center',marginRight:80}}>{userLogin.taiKhoan}<UserOutlined style={{marginLeft:7}} /></div></button><button>Đăng xuất</button></Fragment> : ''}
+      }}><div style={{width: 50, height: 50, display: 'flex',justifyContent:'center',alignItems:'center',marginRight:80}}>{userLogin.taiKhoan}<UserOutlined style={{marginLeft:7}} /></div></button><button>Đăng xuất</button></div> : ''}
   </Fragment>
 
   return <Route {...restProps} render={(propsRoute) => {
@@ -59,23 +59,27 @@ function AdminTemplate(props) {
                 }}
               >
                 <div className="logo pl-4 py-3" >
+                  <NavLink to="/">
                     <img src="https://seeklogo.com/images/C/cinema-logo-53411DFFE5-seeklogo.com.png" style={{height:50,width:50}} alt="logo"></img>
+                  </NavLink>
                 </div>
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={["sub1"]}>
+                  <SubMenu key="sub1" icon={<UserOutlined />} title="User">
                   <Menu.Item key="1" icon={<UserOutlined />}>
-                    <NavLink to="/admin">Users</NavLink>
+                    <NavLink to="/admin/user">Users List</NavLink>
                   </Menu.Item>
-                  <SubMenu key="sub1" icon={<VideoCameraOutlined />} title="Films">
-                  <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+                  <Menu.Item key="2" icon={<PlusOutlined />}>
+                  <NavLink to="/admin/user/addnew">Add New User</NavLink>
+                  </Menu.Item>
+                  </SubMenu>
+                  <SubMenu key="sub2" icon={<VideoCameraOutlined />} title="Films">
+                  <Menu.Item key="3" icon={<VideoCameraOutlined />}>
                   <NavLink to="/admin/films">Films List</NavLink>
                   </Menu.Item>
-                  <Menu.Item key="3" icon={<PlusOutlined />}>
+                  <Menu.Item key="4" icon={<PlusOutlined />}>
                   <NavLink to="/admin/films/addnew">Add New Film</NavLink>
                   </Menu.Item>
                   </SubMenu>
-                  <Menu.Item key="4" icon={<CalendarOutlined />}>
-                  <NavLink to="/admin/showtime">Showtime</NavLink>
-                  </Menu.Item>
                 </Menu>
               </Sider>
               <Layout>

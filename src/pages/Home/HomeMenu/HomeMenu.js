@@ -24,6 +24,7 @@ export default function HomeMenu(props) {
               className="rounded"
               style={{ height: "50px" }}
               src={heThongRap.logo}
+              id={heThongRap.maHeThongRap}
             ></img>
           }
           key={index}

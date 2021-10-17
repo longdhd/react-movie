@@ -87,7 +87,7 @@ export default function ResponsiveHeader(props) {
   };
   return (
     <nav
-      className={`flex items-center justify-between flex-wrap bg-gray-100 lg:p-7 md:px-4 md:py-3 fixed w-full z-10 top-0 ${
+      className={`flex items-center justify-between flex-wrap bg-gray-100 lg:p-4 md:px-4 md:py-3 fixed w-full z-10 top-0 ${
         scroll ? "lg:bg-opacity-95 shadow-md" : "lg:bg-opacity-0"
       }`}
     >
@@ -152,34 +152,35 @@ export default function ResponsiveHeader(props) {
             </a>
           </li>
           <li className="mr-3 lg:mt-0 md:mt-3">
-            <NavLink
-              to="/"
+            <a
+              href="#homeMenu"
               className={`flex items-center px-4 -mb-1 border-b-2 border-transparent ${
                 scroll ? "text-black" : "lg:text-white text-black"
               }`}
             >
               {t("Cinemas")}
-            </NavLink>
+            </a>
           </li>
           <li className="mr-3 lg:mt-0 md:mt-3">
-            <NavLink
-              to="https://vnexpress.net/giai-tri/phim"
+            <a
+              href="https://vnexpress.net/giai-tri/phim"
+              target = "_blank"
               className={`flex items-center px-4 -mb-1 border-b-2 border-transparent ${
                 scroll ? "text-black" : "lg:text-white text-black"
               }`}
             >
               {t("News")}
-            </NavLink>
+            </a>
           </li>
           <li className="mr-3 lg:mt-0 md:mt-3">
-            <NavLink
-              to="/contact"
+            <a
+              href="#homeFooter"
               className={`flex items-center px-4 -mb-1 border-b-2 border-transparent ${
                 scroll ? "text-black" : "lg:text-white text-black"
               }`}
             >
               {t("Contact")}
-            </NavLink>
+            </a>
           </li>
         </ul>
         <div className="items-center lg:flex">

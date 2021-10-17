@@ -44,7 +44,7 @@ export default function Films(props) {
     {
         title: "Mô Tả",
         dataIndex: "moTa",
-        className: 'text-center',
+        className: 'text-left',
         render: (text,film) => {
             return <Fragment>
                 {film.moTa.length > 50 ? film.moTa.substring(0,50) + ' ...' : film.moTa}
@@ -59,7 +59,7 @@ export default function Films(props) {
           return -1;
         },
         sortDirections: ["descend", "ascend"],
-        width: '40%'
+        width: '30%'
     },
     {
       title: "Ngày Khởi Chiếu",
@@ -98,7 +98,7 @@ export default function Films(props) {
               </Fragment>
             );
           },
-        width:'10%'
+        width:'20%'
       }
   ];
 
@@ -113,7 +113,7 @@ export default function Films(props) {
   }
   return (
     <div className="container">
-      <h1 className="text-2xl font-bold text-center pb-5">Quản Lý Phim</h1>
+      <h1 className="text-2xl font-semibold text-center pb-5">Quản Lý Phim</h1>
       <Search
         className="mb-3"
         placeholder="Tìm phim theo tên"

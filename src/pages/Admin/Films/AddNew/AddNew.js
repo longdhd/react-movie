@@ -150,7 +150,7 @@ const AddNew = () => {
         </Form.Item>
         <Form.Item label="Tác vụ">
           <button
-            className="bg-blue-500 font-semibold text-white rounded px-3 py-2"
+            className="btn btn-success border-0 font-semibold text-white px-3 py-2" style={{background:'linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%)'}}
             type="submit"
           >
             Thêm phim
