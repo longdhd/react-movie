@@ -304,14 +304,14 @@ function KetQua(props) {
                     <h2 className="title-font font-medium text-lg font-bold text-blue-500">
                       {ve.tenPhim}
                     </h2>
-                    <h3 className="font-semibold mb-3">
+                    <h3 className="font-semibold mb-3 text-white">
                       Giờ chiếu: {moment(ve.ngayDat).format("hh:mm A")} - Ngày
                       chiếu: {moment(ve.ngayDat).format("DD-MM-YYYY")}
                     </h3>
-                    <p className="mb-4">
+                    <p className="mb-4 text-white">
                       Địa điểm: {ghe.tenHeThongRap} - {ghe.tenRap}
                     </p>
-                    <p className="mb-4">
+                    <p className="mb-4 text-white">
                       Ghế:{" "}
                       {_.sortBy(ve.danhSachGhe, ["tenGhe"]).map(
                         (ghe, index) => {

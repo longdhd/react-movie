@@ -11,10 +11,8 @@ import LogIn from "./pages/LogIn/LogIn";
 import {Suspense, lazy} from 'react';
 import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
 import Loading from "./components/Loading/Loading";
-import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
 import AdminTemplate from "./templates/AdminTemplate/AdminTemplate";
-import Dashboard from "./pages/Admin/Dashboard/Dashboard";
 import Films from "./pages/Admin/Films/Films";
 import AddNew from "./pages/Admin/Films/AddNew/AddNew";
 import Showtime from "./pages/Admin/Showtime/Showtime";
@@ -23,8 +21,7 @@ import RegisterFormik from "./pages/Register/RegisterFormik";
 import User from "./pages/Admin/User/User";
 import AddUser from "./pages/Admin/User/addUser/AddUser";
 import EditUser from "./pages/Admin/User/editUser/EditUser";
-
-const DatVeTemplateLazy = lazy(()=> import("./templates/DatVeTemplate/DatVeTemplate"));
+import DatVeTemplate from "./templates/DatVeTemplate/DatVeTemplate";
 
 export const history = createBrowserHistory();
 
@@ -40,7 +37,7 @@ function App() {
         <UserTemplate path="/login" exact Component={LogIn}/>
         <UserTemplate path="/register" exact Component={RegisterFormik}/>
         <Route path="/profile"><Profile></Profile></Route>
-        <AdminTemplate path="/admin" exact Component={Dashboard}/>
+        <AdminTemplate path="/admin" exact Component={User}/>
         <AdminTemplate path="/admin/user" exact Component={User}/>
         <AdminTemplate path="/admin/user/addnew" exact Component={AddUser}/>
         <AdminTemplate path="/admin/user/edit/:id" exact Component={EditUser}/>
@@ -48,9 +45,7 @@ function App() {
         <AdminTemplate path="/admin/films/addnew" exact Component={AddNew}/>
         <AdminTemplate path="/admin/films/edit/:id" exact Component={Edit}/>
         <AdminTemplate path="/admin/films/showtime/:id/:tenphim" exact Component={Showtime}/>
-        <Suspense fallback={<h1>Loading...</h1>}>
-          <DatVeTemplateLazy path="/checkout/:id" exact Component={DatVe}/>
-        </Suspense>
+        <DatVeTemplate path="/checkout/:id" exact Component={DatVe}/>
       </Switch>
     </Router>
   );
