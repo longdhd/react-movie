@@ -75,6 +75,13 @@ export default class MultipleRowSlick extends Component {
           },
         },
         {
+          breakpoint: 810,
+          settings: {
+            slidesToShow: 2,
+            slidesPerRow: 1,
+          },
+        },
+        {
           breakpoint: 768,
           settings: {
             slidesToShow: 2,

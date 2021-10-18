@@ -49,6 +49,15 @@
   z-index: 0 !important;
 }
 
+@media only screen and (max-width: 810px) {
+  .carouselBlur {
+      height: 36%;
+  }
+  .button__bar{
+    bottom: 20px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .carouselBlur {
       height: 36%;

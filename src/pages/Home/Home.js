@@ -38,7 +38,7 @@ export default function Home() {
         </div>
       </div>
       <div style={{background:"rgba(32,32,54,1.0)",marginTop:'200px'}} id="homeMenu"> 
-        <div className="lg:container lg:mx-24 py-24">
+        <div className="lg:mx-24 py-24">
           <HomeMenu heThongRapChieu={heThongRapChieu} />
         </div>
       </div>
@@ -48,7 +48,8 @@ export default function Home() {
             "url(https://akthemes.com/video/images/slider/banner-3.png)",
           height: "450px",
           backgroundPosition: "50% -50%",
-          backgroundRepeat:'no-repeat'
+          backgroundRepeat:'no-repeat',
+          width:'100%'
         }}
         className="bg-cover bg-fixed"
       ></div>

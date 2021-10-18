@@ -6,7 +6,6 @@ import { Select } from "antd";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import { TOKEN, USER_LOGIN } from "../../../../util/settings/config";
-import { LoginOutlined, LogoutOutlined } from "@ant-design/icons";
 
 export default function ResponsiveHeader(props) {
   const [scroll, setScroll] = useState(false);
@@ -131,7 +130,7 @@ export default function ResponsiveHeader(props) {
             scroll ? "text-lg" : "text-xl"
           }`}
         >
-          <li className="mr-3 lg:mt-0 md:mt-3">
+          <li className="mr-3 lg:mt-0 md:mt-3 mt-2">
             <NavLink
               to="/"
               className={`flex items-center px-4 -mb-1 border-b-2 border-transparent transition-all ${
@@ -141,7 +140,7 @@ export default function ResponsiveHeader(props) {
               {t("Homepage")}
             </NavLink>
           </li>
-          <li className="mr-3 lg:mt-0 md:mt-3">
+          <li className="mr-3 lg:mt-0 md:mt-3 mt-2">
             <a
               href="#homeMenu"
               className={`flex items-center px-4 -mb-1 border-b-2 border-transparent ${
@@ -151,7 +150,7 @@ export default function ResponsiveHeader(props) {
               {t("Showtimes")}
             </a>
           </li>
-          <li className="mr-3 lg:mt-0 md:mt-3">
+          <li className="mr-3 lg:mt-0 md:mt-3 mt-2">
             <a
               href="#homeMenu"
               className={`flex items-center px-4 -mb-1 border-b-2 border-transparent ${
@@ -161,7 +160,7 @@ export default function ResponsiveHeader(props) {
               {t("Cinemas")}
             </a>
           </li>
-          <li className="mr-3 lg:mt-0 md:mt-3">
+          <li className="mr-3 lg:mt-0 md:mt-3 mt-2">
             <a
               href="https://vnexpress.net/giai-tri/phim"
               target = "_blank"
@@ -172,7 +171,7 @@ export default function ResponsiveHeader(props) {
               {t("News")}
             </a>
           </li>
-          <li className="mr-3 lg:mt-0 md:mt-3">
+          <li className="mr-3 lg:mt-0 md:mt-3 mt-2">
             <a
               href="#homeFooter"
               className={`flex items-center px-4 -mb-1 border-b-2 border-transparent ${

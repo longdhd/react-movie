@@ -3,6 +3,14 @@
     overflow: hidden;
 }
 
+@media only screen and (max-width: 810px) {
+    .sliderBanner {
+        height: 360px;
+        overflow: hidden;
+    }
+}
+
+
 @media only screen and (max-width: 768px) {
     .sliderBanner {
         height: 360px;

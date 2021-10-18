@@ -16,6 +16,13 @@ h1.promotionHeading::before {
   left: calc((100% - 120px) / 2);
 }
 
+@media only screen and (max-width: 810px) {
+  h1.promotionHeading::before {
+    bottom: 580px;
+    width: 120px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   h1.promotionHeading::before {
     bottom: 530px;
