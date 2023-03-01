@@ -26,8 +26,9 @@ export default function Home() {
     // console.log('heThongRapChieu',heThongRapChieu);
   }, [])
 
+
   return (
-    <div>
+    <div className="font-nunitosans">
       <HomeCarousel />
       <div style={{background: "url(https://www.orionprotocol.io/hubfs/Orion_April2020/Images/f-bg.png)",backgroundSize:'cover', height:'100%' }}>
         <HomePromotion />

@@ -86,7 +86,7 @@ export default function ResponsiveHeader(props) {
   };
   return (
     <nav
-      className={`flex items-center justify-between flex-wrap bg-gray-100 lg:p-4 md:px-4 md:py-3 fixed w-full z-10 top-0 ${
+      className={`flex items-center font-nunitosans font-semibold justify-between flex-wrap bg-gray-100 lg:p-4 md:px-4 md:py-3 fixed w-full z-10 top-0 ${
         scroll ? "lg:bg-opacity-95 shadow-md" : "lg:bg-opacity-0"
       }`}
     >
@@ -163,7 +163,8 @@ export default function ResponsiveHeader(props) {
           <li className="mr-3 lg:mt-0 md:mt-3 mt-2">
             <a
               href="https://vnexpress.net/giai-tri/phim"
-              target = "_blank"
+              target="_blank"
+              rel="noreferrer"
               className={`flex items-center px-4 -mb-1 border-b-2 border-transparent ${
                 scroll ? "text-black" : "lg:text-white text-black"
               }`}
@@ -183,21 +184,21 @@ export default function ResponsiveHeader(props) {
           </li>
         </ul>
         <div className="items-center lg:flex">
-            {renderLogin()}
-            <>
-              <Select
-                defaultValue="vie"
-                style={{ width: 150, fontSize: "1rem", marginLeft: 20 }}
-                bordered={false}
-                className={`${scroll ? "text-black" : "text-white"}`}
-                onChange={handleChange}
-              >
-                <Option value="chn">🇨🇳 中文</Option>
-                <Option value="eng">🇬🇧 English</Option>
-                <Option value="vie">🇻🇳 Tiếng Việt</Option>
-              </Select>
-            </>
-          </div>
+          {renderLogin()}
+          <>
+            <Select
+              defaultValue="vie"
+              style={{ width: 150, fontSize: "1rem", marginLeft: 20 }}
+              bordered={false}
+              className={`${scroll ? "text-black" : "text-white"}`}
+              onChange={handleChange}
+            >
+              <Option value="chn">🇨🇳 中文</Option>
+              <Option value="eng">🇬🇧 English</Option>
+              <Option value="vie">🇻🇳 Tiếng Việt</Option>
+            </Select>
+          </>
+        </div>
       </div>
     </nav>
   );

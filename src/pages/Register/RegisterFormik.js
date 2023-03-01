@@ -163,7 +163,7 @@ export default function RegisterFormik() {
                       for="agree"
                       className="ml-2 font-bold text-gray-700 tracking-wide"
                     >
-                      Đồng ý điều khoản sử dụng <a target="_blank" style={{textDecoration:'underline',fontSize:'0.75rem'}} href="https://tix.vn/thoa-thuan-su-dung">Tìm hiểu thêm</a>
+                      Đồng ý điều khoản sử dụng <a target="_blank" rel="noreferrer" style={{textDecoration:'underline',fontSize:'0.75rem'}} href="https://tix.vn/thoa-thuan-su-dung">Tìm hiểu thêm</a>
                     </label>
                     <br />
                   </div>

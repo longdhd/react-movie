@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Movie Ticket Online Booking Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Stack: ReactJS, React-Router v6, Redux, TailwindCSS, Antdesign.
 
 ## Available Scripts
 

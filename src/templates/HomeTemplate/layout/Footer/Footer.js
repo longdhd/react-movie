@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="text-gray-600 body-font position-relative" id="homeFooter">
+    <footer className="text-gray-600 font-nunitosans font-semibold position-relative" id="homeFooter">
       <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
@@ -39,7 +39,7 @@ export default function Footer() {
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a href="https://tix.vn/chinh-sach-bao-mat" target="_blank" className="text-gray-600 hover:text-gray-800">Chính Sách Bảo Mật</a>
+                <a href="https://tix.vn/chinh-sach-bao-mat" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-800">Chính Sách Bảo Mật</a>
               </li>
               <li>
                 <a className="text-gray-600 hover:text-gray-800">Tuyển Dụng</a>
@@ -55,10 +55,10 @@ export default function Footer() {
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a href="https://tix.vn/faq" target="_blank" className="text-gray-600 hover:text-gray-800">FAQ</a>
+                <a href="https://tix.vn/faq" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-800">FAQ</a>
               </li>
               <li>
-                <a href="mailto: support@tix.vn" target="_blank" className="text-gray-600 hover:text-gray-800">24/7 Support</a>
+                <a href="mailto: support@tix.vn" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-800">24/7 Support</a>
               </li>
             </nav>
           </div>
@@ -67,12 +67,12 @@ export default function Footer() {
       <div style={{backgroundColor:'rgba(32,32,54,1.0)'}}>
         <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
           <p className="text-white text-sm text-center sm:text-left">
-            © 2021 CINEMA react project —
+            © {new Date().getFullYear()} CINEMA react project —
             <a
               href="https://www.facebook.com/itsme.saigonese/"
               rel="noopener noreferrer"
               className="text-white ml-1"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               @Long Dang
             </a>

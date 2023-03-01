@@ -99,7 +99,7 @@ function AdminTemplate(props) {
                   </div>
                 </Content>
                 <Footer style={{ textAlign: "center" }}>
-                  Cybersoft ©2021 Created by Dang Hoang Duy Long
+                  Cybersoft ©{new Date().getFullYear()} Created by Dang Hoang Duy Long
                 </Footer>
               </Layout>
             </Layout>

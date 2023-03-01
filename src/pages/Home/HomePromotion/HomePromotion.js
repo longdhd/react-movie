@@ -26,7 +26,7 @@ export default function HomePromotion() {
               className="md:h-40 bg-gray-400 rounded-lg"
               style={{
                 backgroundImage:
-                  "url(https://www.citypassguide.com/media/slideshow/cinema.jpg)",
+                  "url(https://www.odeon.co.uk/media/m4vphgic/microsoftteams-image-66.jpg)",
                 ackgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -90,7 +90,7 @@ export default function HomePromotion() {
               className="md:h-40 bg-gray-400 rounded-lg"
               style={{
                 backgroundImage:
-                  "url(https://www.duluthchildrensmuseum.org/webstore/wp-content/uploads/2019/11/Giftcard_icon-01_1024x1024.jpg)",
+                  "url(https://www.odeon.co.uk/media/i0wfmzqs/gift-cards_homepage-1-1.jpg)",
                 ackgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
