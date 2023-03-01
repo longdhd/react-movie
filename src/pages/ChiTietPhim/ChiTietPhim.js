@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./ChiTietPhim.css";
 import "../../assets/styles/circle-percentage/circle.css";
 import { useSelector, useDispatch } from "react-redux";

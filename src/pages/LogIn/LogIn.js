@@ -3,10 +3,12 @@ import {useFormik} from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { dangNhapAction } from '../../Redux/action/QuanLyNguoiDungAction';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 
 export default function LogIn() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const {userLogin} = useSelector(state => state.QuanLyNguoiDungReducer);
 
@@ -28,7 +30,10 @@ export default function LogIn() {
 
     return <form onSubmit={formik.handleSubmit} className="lg:w-1/2 xl:max-w-screen-sm">
     <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
-      <div className="cursor-pointer flex items-center">
+      <div className="cursor-pointer flex items-center"
+          onClick={() => {
+            navigate("/", {replace: false});
+          }}>
         <div className="ml-12">
             <img src="https://seeklogo.com/images/C/cinema-logo-53411DFFE5-seeklogo.com.png" className="h-12" alt="logo"></img>
         </div>

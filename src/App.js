@@ -34,11 +34,18 @@ export const history = createBrowserHistory();
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" exact element={<HomeTemplate />}>
-        <Route index element={<Home />} />
-        <Route path="/news" exact element={<News />} />
-        <Route path="/contact" exact element={<Contact />} />
-        <Route path="/detail/:id" exact element={<ChiTietPhim />} />
+      <Route>
+        <Route path="/" exact element={<HomeTemplate />}>
+          <Route index element={<Home />} />
+          <Route path="news" exact element={<News />} />
+          <Route path="contact" exact element={<Contact />} />
+          <Route path="detail/:id" exact element={<ChiTietPhim />} />
+        </Route>
+        <Route path="/" element={<UserTemplate />}>
+          <Route path="login" exact element={<LogIn />} />
+          <Route path="register" exact element={<RegisterFormik />} />
+        </Route>
+        <Route path="profile" exact element={<Profile />} />
       </Route>
     )
   );

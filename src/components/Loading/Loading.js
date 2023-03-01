@@ -1,9 +1,8 @@
 import { LoadingOutlined } from '@ant-design/icons';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function Loading() {
-    const dispatch = useDispatch();
     const {isLoading} = useSelector(state => state.LoadingReducer);
 
     return (
