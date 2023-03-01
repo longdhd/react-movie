@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Input, Tabs, Button, Checkbox } from "antd";
+import { Form, Input, Tabs } from "antd";
 import { useFormik } from "formik";
 import { capNhatThongTinNguoiDungAction, layThongTinTaiKhoanAction } from "../../../Redux/action/QuanLyNguoiDungAction";
 import './ThongTinCaNhan.css';

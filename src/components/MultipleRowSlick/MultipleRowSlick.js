@@ -32,7 +32,7 @@ function SamplePrevArrow(props) {
 
 export default class MultipleRowSlick extends Component {
   renderFilmDangChieu = () => {
-    let filmDangChieu = _.filter(this.props.arrFilm, ["dangChieu", true]);
+    let filmDangChieu = _.filter(this.props.arrFilm, ["dangChieu", null]);
     return filmDangChieu.map((item, index) => {
       return (
         <div key={index} className={`${styleSlick["width-item"]}`}>
@@ -43,7 +43,7 @@ export default class MultipleRowSlick extends Component {
   };
 
   renderFilmSapChieu = () => {
-    let filmSapChieu = _.filter(this.props.arrFilm, ["dangChieu", false]);
+    let filmSapChieu = _.filter(this.props.arrFilm, ["dangChieu", null]);
     return filmSapChieu.map((item, index) => {
       return (
         <div key={index} className={`${styleSlick["width-item"]}`}>

@@ -6,7 +6,7 @@ import { layThongTinLichChieuPhim } from "../../Redux/action/QuanLyRapAction";
 import moment from "moment";
 import _ from "lodash";
 import { Rate, Tabs } from "antd";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 const { TabPane } = Tabs;
 
@@ -28,9 +28,11 @@ export default function ChiTietPhim(props) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   };
+  
+  const { id } = useParams();
 
   useEffect(() => {
-    let { id } = props.match.params;
+    // let { id } = props.match.params;
     dispatch(layThongTinLichChieuPhim(id));
   }, []);
 
@@ -50,9 +52,9 @@ export default function ChiTietPhim(props) {
       ></div>
       <div className="styleBlur"></div>
       <div className="movieDetail container text-white font-semibold">
-        <div class="row">
-          <div class="col-lg-4 col-md-5 moviePoster text-right">
-            <a href={filmDetail.trailer} target="_blank">
+        <div className="row">
+          <div className="col-lg-4 col-md-5 moviePoster text-right">
+            <a href={filmDetail.trailer} target="_blank" rel="noreferrer">
               <img
                 className="w-5/6"
                 src={filmDetail.hinhAnh} onError={(e)=>{e.target.onerror = null; e.target.src=`https://picsum.photos/200/300?random=${filmDetail.maPhim}`}}
@@ -80,7 +82,7 @@ export default function ChiTietPhim(props) {
               </svgs>
             </a>
           </div>
-          <div class="col-lg-4 col-md-5 movieInfo text-left py-32">
+          <div className="col-lg-4 col-md-5 movieInfo text-left py-32">
             <div className="mb-3">
               <span>
                 {moment(filmDetail.ngayKhoiChieu).format("DD.MM.YYYY")}

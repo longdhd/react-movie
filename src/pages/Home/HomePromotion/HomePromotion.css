@@ -1,7 +1,7 @@
 h1.promotionHeading::before {
   content: "";
   position: absolute;
-  bottom: 175px;
+  bottom: 200px;
   width: 120px;
   height: 5px;
   border: none;

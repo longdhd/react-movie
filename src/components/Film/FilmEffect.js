@@ -2,9 +2,11 @@ import React from "react";
 import "./FilmEffect.css";
 import {history} from '../../App';
 import { CaretRightOutlined, UploadOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 export default function FilmEffect(props) {
   const { phim } = props;
+  const navigate = useNavigate();
   return (
     <div className="p-4">
       <div className="h-full filmCard bg-transparent rounded-lg overflow-hidden text-center relative">
@@ -34,7 +36,8 @@ export default function FilmEffect(props) {
             </div>
             <div className="flip-card-back pt-3 items-center">
               <div onClick={() => {
-                history.push(`/detail/${phim.maPhim}`)
+                // history.push(`/detail/${phim.maPhim}`)
+                navigate(`/detail/${phim.maPhim}`);
               }} className="text-white">
                 <p
                   className="pt-2 font-semibold text-lg rounded-md flex justify-center"
@@ -61,7 +64,7 @@ export default function FilmEffect(props) {
           </svg>
         </div>
         <div className="film__overlay rounded">
-          <a href={phim.trailer} target="_blank">
+          <a href={phim.trailer} target="_blank" rel="noreferrer">
               <CaretRightOutlined style={{color:'#fff',fontSize:'3.2rem'}}/>
           </a>
         </div>

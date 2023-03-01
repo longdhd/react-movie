@@ -1,25 +1,27 @@
 import { Fragment, useEffect } from "react";
-import { Route } from "react-router";
+import { Outlet } from "react-router-dom";
 import Footer from "./layout/Footer/Footer";
-import Header from "./layout/Header/Header";
 import ResponsiveHeader from "./layout/Header/ResponsiveHeader";
 
-export const HomeTemplate = (props) => { //path,exact,component
-    
-    const {Component,...restProps} = props;
+export const HomeTemplate = () => {
+  //path,exact,component
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-      })
+  // const { Component, ...restProps } = props;
 
-    return <Route {...restProps} render={(propsRoute)=>{ //props.location,props.history,props.match
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    console.log("scroll");
+  },[]);
 
-        return <Fragment>
-            <ResponsiveHeader {...propsRoute}/>
+  //props.location,props.history,props.match
 
-            <Component {...propsRoute}/>
+  return (
+    <Fragment>
+      <ResponsiveHeader />
 
-            <Footer {...propsRoute}/>
-        </Fragment>
-    }} />
-}
+      <Outlet />
+
+      <Footer />
+    </Fragment>
+  );
+};
