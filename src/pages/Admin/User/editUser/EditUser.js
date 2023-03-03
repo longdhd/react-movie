@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Form, Input, Tabs, Select } from 'antd';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { layDanhSachNguoiDungAction, capNhatThongTinNguoiDungAction } from './../../../../Redux/action/QuanLyNguoiDungAction';
+import { useParams } from 'react-router-dom';
 const { TabPane } = Tabs;
 
 function callback(key) {
@@ -10,10 +11,11 @@ function callback(key) {
 }
 
 export default function EditUser(props) {
+    const {id} = useParams();
     const dispatch = useDispatch()
     const {danhSachNguoiDung} = useSelector(state => state.QuanLyNguoiDungReducer)
     useEffect(() => {
-        dispatch(layDanhSachNguoiDungAction(props.match.params.id))
+        dispatch(layDanhSachNguoiDungAction(id))
     }, [])
    const handleChangeMaNhom =(value)=>{
         formik.setFieldValue('maNhom',value)

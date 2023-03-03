@@ -1,5 +1,5 @@
 import { RightOutlined } from "@ant-design/icons";
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import './HomePromotion.css';
 
 export default function HomePromotion() {

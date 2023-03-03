@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import { Component, Fragment } from "react";
 import Slider from "react-slick";
 import _ from "lodash";
 import Film from "../Film/Film";

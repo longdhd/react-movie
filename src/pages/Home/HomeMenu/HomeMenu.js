@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { Tabs } from "antd";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";

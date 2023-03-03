@@ -1,4 +1,3 @@
-import React from 'react'
 import { Form, Input, Tabs, Select, Button, Checkbox } from 'antd';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';

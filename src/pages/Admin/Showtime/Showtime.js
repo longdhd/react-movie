@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Button, Select, InputNumber, DatePicker } from "antd";
 import { qLRapService } from "../../../services/QuanLyRapService";
 import { useFormik } from "formik";
 import { ConsoleSqlOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { qLDatVeService } from "../../../services/QuanLyDatVeService";
+import { useParams } from "react-router-dom";
 
 export default function Showtime(props) {
+  const { id, tenphim } = useParams();
   const [state, setState] = useState({
     heThongRap: [],
     cumRap: [],
@@ -14,19 +16,19 @@ export default function Showtime(props) {
 
   const formik = useFormik({
     initialValues: {
-      maPhim: props.match.params.id,
+      maPhim: id,
       ngayChieuGioChieu: "",
       maRap: "",
       giaVe: "",
     },
     onSubmit: async (values) => {
-        console.log('values',values);
-        try {
-            const result = qLDatVeService.taoLichChieu(values);
-            alert('Thêm lịch chiếu thành công!')
-        } catch (error) {
-            console.log("error", error.response?.data);
-        }
+      console.log("values", values);
+      try {
+        const result = qLDatVeService.taoLichChieu(values);
+        alert("Thêm lịch chiếu thành công!");
+      } catch (error) {
+        console.log("error", error.response?.data);
+      }
     },
   });
 
@@ -93,7 +95,7 @@ export default function Showtime(props) {
       onSubmitCapture={formik.handleSubmit}
     >
       <h1 className="text-2xl font-semibold text-center mb-5">
-        Thêm Lịch Chiếu - {props.match.params.tenphim}
+        Thêm Lịch Chiếu - {tenphim}
       </h1>
       <Form.Item label="Hệ thống rạp">
         <Select
@@ -130,7 +132,13 @@ export default function Showtime(props) {
         />
       </Form.Item>
       <div className="text-center pt-3">
-        <button type="submit" className="rounded px-3 py-2" style={{background:'#1890ff',color:'#fff',fontSize:'0.95rem'}}>Tạo mới</button>
+        <button
+          type="submit"
+          className="rounded px-3 py-2"
+          style={{ background: "#1890ff", color: "#fff", fontSize: "0.95rem" }}
+        >
+          Tạo mới
+        </button>
       </div>
     </Form>
   );

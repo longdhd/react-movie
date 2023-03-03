@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { history } from "./../../../../App";
 import { Select } from "antd";
 import { useTranslation } from "react-i18next";
@@ -12,6 +12,7 @@ export default function ResponsiveHeader(props) {
   const { Option } = Select;
   const { t, i18n } = useTranslation();
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
+  const navigate = useNavigate();
 
   //componentDidMount: Header thay đổi khi scroll
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function ResponsiveHeader(props) {
         <Fragment>
           <button
             onClick={() => {
-              history.push("/register");
+              navigate("/register", {replace: false});
             }}
             className={`self-center px-4 py-3 rounded ${
               scroll ? "text-black" : "lg:text-white"
@@ -44,7 +45,7 @@ export default function ResponsiveHeader(props) {
           </button>
           <button
             onClick={() => {
-              history.push("/login");
+              navigate("/login", {replace: false});
             }}
             className={`self-center px-4 py-3 font-semibold rounded bg-violet-600 text-coolGray-50 ${
               scroll ? "text-black" : "lg:text-white"
@@ -61,6 +62,7 @@ export default function ResponsiveHeader(props) {
         <button
           onClick={() => {
             history.push("/profile");
+            navigate("/profile", {replace: false});
           }}
           className={`self-center px-8 py-3 rounded ${
             scroll ? "text-black" : "lg:text-white"
@@ -73,6 +75,7 @@ export default function ResponsiveHeader(props) {
             localStorage.removeItem(USER_LOGIN);
             localStorage.removeItem(TOKEN);
             history.push("/");
+            navigate("/", {replace: false});
             window.location.reload();
           }}
           className={`self-center py-3 p-8 font-semibold rounded bg-violet-600 text-coolGray-50 ${

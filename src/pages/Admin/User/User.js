@@ -1,16 +1,15 @@
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 import { Table } from 'antd';
 import { Input, Button, Space } from 'antd';
 import { AudioOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { history } from './../../../App';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { layDanhSachNguoiDungAction, xoaNguoiDungAction } from '../../../Redux/action/QuanLyNguoiDungAction';
 import Loading from '../../../components/Loading/Loading';
 
 export default function User() {
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const {danhSachNguoiDung} = useSelector(state => state.QuanLyNguoiDungReducer)
 
@@ -131,7 +130,8 @@ export default function User() {
             {!isLoading ? <div className="container">
                 <h3 className="text-2xl text-center font-semibold mb-5" >Quản Lý Người Dùng</h3>
                 <Button onClick={()=>{
-                    history.push('/admin/users/adduser');
+                    // history.push('/admin/users/adduser');
+                    navigate('/admin/user/addnew');
                 }} className="mb-3">Thêm người dùng</Button> <br />
                 <Space direction="vertical">
                     <Search

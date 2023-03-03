@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import style from "./DatVe.module.css";
 import "./DatVe.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,14 +7,18 @@ import {
   datVeAction,
   layDanhSachPhongVeAction,
 } from "../../Redux/action/QuanLyDatVeAction";
-import { CloseOutlined, RollbackOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  CloseOutlined,
+  RollbackOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { CHUYEN_TAB, DAT_GHE, DAT_VE } from "../../Redux/types/QuanLyDatVeType";
 import { DanhSachVe } from "../../_core/models/DanhSachVe";
 import _ from "lodash";
 import { Tabs } from "antd";
 import { layThongTinTaiKhoanAction } from "../../Redux/action/QuanLyNguoiDungAction";
 import moment from "moment";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { connection } from "../..";
 
 function ChonGhe(props) {
@@ -26,7 +30,7 @@ function ChonGhe(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const action = layDanhSachPhongVeAction(props.match.params.id);
+    const action = layDanhSachPhongVeAction(props.id);
     dispatch(action);
 
     //Load lại phòng vé nếu có 1 client đặt vé thành công
@@ -35,7 +39,7 @@ function ChonGhe(props) {
     });
 
     //Cái đặt mặc định load ds ghế tất cả client khi vừa vào trang
-    connection.invoke("loadDanhSachGhe", props.match.params.id);
+    connection.invoke("loadDanhSachGhe", props.id);
 
     //Load danh sách ghế người khác đang đặt từ server
     connection.on("loadDanhSachGheDaDat", (dsGheKhachDat) => {
@@ -71,7 +75,7 @@ function ChonGhe(props) {
   }, []);
 
   const clearGhe = function (event) {
-    connection.invoke("huyDat", userLogin.taiKhoan, props.match.params.id);
+    connection.invoke("huyDat", userLogin.taiKhoan, props.id);
   };
 
   const { thongTinPhim, danhSachGhe } = chiTietPhongVe;
@@ -104,7 +108,7 @@ function ChonGhe(props) {
           <button
             disabled={ghe.daDat || classGheKhachDangDat != ""}
             onClick={() => {
-              dispatch(datGheAction(ghe, props.match.params.id));
+              dispatch(datGheAction(ghe, props.id));
             }}
             className={`ghe ${classGheKhachDangDat} ${classGheDatThanhCong} ${classGheDangDat} ${classGheVip} ${classGheDaDat}`}
           >
@@ -125,8 +129,7 @@ function ChonGhe(props) {
   };
 
   return (
-  
-  <div className="min-h-screen" style={{color:'#fff'}}>
+    <div className="min-h-screen" style={{ color: "#fff" }}>
       <div className="grid grid-cols-12">
         <div className="lg:col-span-9 md:col-span-12">
           <div className="flex flex-col items-center">
@@ -186,7 +189,10 @@ function ChonGhe(props) {
           </div>
         </div>
         <div className="lg:col-span-3 md:col-span-12 lg:border-l-2 md:border-t-2 border-opacity-25 pl-3">
-          <h3 className="text-center text-2xl lg:block md:hidden my-3" style={{color:'rgb(32, 245, 186)'}}>
+          <h3
+            className="text-center text-2xl lg:block md:hidden my-3"
+            style={{ color: "rgb(32, 245, 186)" }}
+          >
             {danhSachGheDangDat
               .reduce((tongTien, ghe, index) => {
                 return (tongTien += ghe.giaVe);
@@ -195,26 +201,40 @@ function ChonGhe(props) {
             VND
           </h3>
           <hr></hr>
-          <h3 className="text-xl font-semibold capitalize text-white my-3">{thongTinPhim.tenPhim}</h3>
-          <p className="text-left"><span className="font-semibold text-white">Địa điểm:</span> {thongTinPhim.diaChi}</p>
+          <h3 className="text-xl font-semibold capitalize text-white my-3">
+            {thongTinPhim.tenPhim}
+          </h3>
+          <p className="text-left">
+            <span className="font-semibold text-white">Địa điểm:</span>{" "}
+            {thongTinPhim.diaChi}
+          </p>
           <p className="text-left my-3 border-b-2 border-opacity-25 pb-3">
-          <span className="font-semibold text-white">Suất chiếu: </span> {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu}
+            <span className="font-semibold text-white">Suất chiếu: </span>{" "}
+            {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu}
           </p>
           <hr></hr>
           <div className="border-b-2 border-opacity-25 pb-3">
             <div className="text-xl">
-              <span className="text-left font-semibold" style={{color:'rgb(0, 186, 255)'}}>Ghế đang chọn: </span>
+              <span
+                className="text-left font-semibold"
+                style={{ color: "rgb(0, 186, 255)" }}
+              >
+                Ghế đang chọn:{" "}
+              </span>
               {_.sortBy(danhSachGheDangDat, ["stt"]).map(
                 (gheDangDat, index) => {
-                  if(index === danhSachGheDangDat.length-1){
+                  if (index === danhSachGheDangDat.length - 1) {
                     return (
                       <Fragment key={index}>
-                      <span style={{ color: "rgb(31, 209, 228)" }} key={index}>
-                        {" "}
-                        {gheDangDat.stt}
-                      </span>
-                    </Fragment>
-                    )
+                        <span
+                          style={{ color: "rgb(31, 209, 228)" }}
+                          key={index}
+                        >
+                          {" "}
+                          {gheDangDat.stt}
+                        </span>
+                      </Fragment>
+                    );
                   }
                   return (
                     <Fragment key={index}>
@@ -230,9 +250,9 @@ function ChonGhe(props) {
             <div className="text-left pr-5 mt-3 text-xl">
               <span className="text-green-400 font-semibold">Thành tiền:</span>
               <span className="text-green-400 ml-2">
-              {danhSachGheDangDat
+                {danhSachGheDangDat
                   .reduce((tongTien, ghe, index) => {
-                    return  (tongTien += ghe.giaVe);
+                    return (tongTien += ghe.giaVe);
                   }, 0)
                   .toLocaleString()}
               </span>
@@ -253,12 +273,15 @@ function ChonGhe(props) {
             <div
               onClick={() => {
                 const danhSachVe = new DanhSachVe();
-                danhSachVe.maLichChieu = props.match.params.id;
+                danhSachVe.maLichChieu = props.id;
                 danhSachVe.danhSachVe = danhSachGheDangDat;
                 dispatch(datVeAction(danhSachVe));
               }}
               className="text-white w-11/12 text-lg text-center py-2 font-bold cursor-pointer"
-              style={{background:'linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%)'}}
+              style={{
+                background:
+                  "linear-gradient(135deg,rgba(0,255,170,1.0) 0%,rgba(0,187,255,1.0) 53%,rgba(69,121,245,1.0) 100%)",
+              }}
             >
               ĐẶT VÉ
             </div>
@@ -337,33 +360,45 @@ function callback(key) {
 }
 
 export default function DatVe(props) {
-  const { activeTab, chiTietPhongVe } = useSelector((state) => state.QuanLyDatVeReducer);
+  const { id } = useParams();
+  const { activeTab, chiTietPhongVe } = useSelector(
+    (state) => state.QuanLyDatVeReducer
+  );
   const { thongTinPhim } = chiTietPhongVe;
-  const operations = <NavLink
-  className="p-2 text-white pr-5 text-lg relative"
-  to="/"
->
-  Trang chủ <RollbackOutlined style={{fontSize:'1.2rem',position:'absolute',bottom:9}}/>
-</NavLink>;
+  const operations = (
+    <NavLink className="p-2 text-white pr-5 text-lg relative" to="/">
+      Trang chủ{" "}
+      <RollbackOutlined
+        style={{ fontSize: "1.2rem", position: "absolute", bottom: 9 }}
+      />
+    </NavLink>
+  );
   console.log("activeTab", activeTab);
   return (
     <div className="pl-">
-      <div className="checkoutBackground" style={{backgroundImage:`url(${thongTinPhim.hinhAnh})`,backgroundSize:'cover',backgroundPosition:'center'}}></div>
+      <div
+        className="checkoutBackground"
+        style={{
+          backgroundImage: `url(${thongTinPhim.hinhAnh})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
       <div className="checkoutTab relative">
-      <Tabs
-        tabBarExtraContent={operations}
-        defaultActiveKey="1"
-        // activeKey={activeTab}
-        onChange={callback}
-        className="text-white font-semibold"
-      >
-        <TabPane tab="01 - CHỌN GHẾ & THANH TOÁN" key="1">
-          <ChonGhe {...props} />
-        </TabPane>
-        <TabPane tab="02 - KẾT QUẢ ĐẶT VÉ" key="2">
-          <KetQua {...props} />
-        </TabPane>
-      </Tabs>
+        <Tabs
+          tabBarExtraContent={operations}
+          defaultActiveKey="1"
+          // activeKey={activeTab}
+          onChange={callback}
+          className="text-white font-semibold"
+        >
+          <TabPane tab="01 - CHỌN GHẾ & THANH TOÁN" key="1">
+            <ChonGhe {...props} id={id} />
+          </TabPane>
+          <TabPane tab="02 - KẾT QUẢ ĐẶT VÉ" key="2">
+            <KetQua {...props} id={id}/>
+          </TabPane>
+        </Tabs>
       </div>
       <div className="checkoutBlur"></div>
     </div>
