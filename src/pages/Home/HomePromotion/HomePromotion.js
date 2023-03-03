@@ -1,6 +1,9 @@
 import { RightOutlined } from "@ant-design/icons";
 import { Fragment } from "react";
 import './HomePromotion.css';
+import promotionImg1 from '../../../assets/img/promotion1.webp'
+import promotionImg2 from '../../../assets/img/promotion2.jpg'
+
 
 export default function HomePromotion() {
   return (
@@ -26,8 +29,8 @@ export default function HomePromotion() {
               className="md:h-40 bg-gray-400 rounded-lg"
               style={{
                 backgroundImage:
-                  "url(https://www.odeon.co.uk/media/m4vphgic/microsoftteams-image-66.jpg)",
-                ackgroundRepeat: "no-repeat",
+                  `url(${promotionImg1})`,
+                backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -90,7 +93,7 @@ export default function HomePromotion() {
               className="md:h-40 bg-gray-400 rounded-lg"
               style={{
                 backgroundImage:
-                  "url(https://www.odeon.co.uk/media/i0wfmzqs/gift-cards_homepage-1-1.jpg)",
+                  `url(${promotionImg2})`,
                 ackgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",

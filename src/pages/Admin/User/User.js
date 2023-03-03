@@ -125,7 +125,6 @@ export default function User() {
     const {userLogin} = useSelector(state => state.QuanLyNguoiDungReducer)
     const {isLoading} = useSelector(state => state.LoadingReducer)
     return (
-
         <Fragment>
             {!isLoading ? <div className="container">
                 <h3 className="text-2xl text-center font-semibold mb-5" >Quản Lý Người Dùng</h3>
@@ -146,7 +145,5 @@ export default function User() {
             </div> : <div className="mt-52"><Loading /></div> }
 
         </Fragment>
-
-
     )
 }

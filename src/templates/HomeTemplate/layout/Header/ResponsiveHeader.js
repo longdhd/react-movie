@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { history } from "./../../../../App";
 import { Select } from "antd";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
@@ -61,7 +60,7 @@ export default function ResponsiveHeader(props) {
       <Fragment>
         <button
           onClick={() => {
-            history.push("/profile");
+            // history.push("/profile");
             navigate("/profile", {replace: false});
           }}
           className={`self-center px-8 py-3 rounded ${
@@ -74,7 +73,7 @@ export default function ResponsiveHeader(props) {
           onClick={() => {
             localStorage.removeItem(USER_LOGIN);
             localStorage.removeItem(TOKEN);
-            history.push("/");
+            // history.push("/");
             navigate("/", {replace: false});
             window.location.reload();
           }}
