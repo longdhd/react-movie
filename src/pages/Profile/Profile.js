@@ -1,18 +1,16 @@
 import { Fragment, useEffect } from "react";
 import { Tabs } from "antd";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { HistoryOutlined, HomeOutlined, UserOutlined } from "@ant-design/icons";
 import { Menu, Dropdown, Button, Space } from "antd";
 import { USER_LOGIN, TOKEN } from "./../../util/settings/config";
-import { history } from "./../../App";
 import ThongTinCaNhan from "./ThongTinCaNhan/ThongTinCaNhan";
 import LichSu from "./LichSuDatVe/LichSuDatVe";
 const { TabPane } = Tabs;
 
 export default function Profile() {
+  let userLogin = null;
   const navigate = useNavigate();
-  const userLogin = null;
-
   useEffect(() => {
     if (localStorage.getItem(USER_LOGIN)) {
       userLogin = JSON.parse(localStorage.getItem(USER_LOGIN));
@@ -92,7 +90,8 @@ export default function Profile() {
           onClick={() => {
             localStorage.removeItem(USER_LOGIN);
             localStorage.removeItem(TOKEN);
-            history.push("/login");
+            // history.push("/login");
+            navigate("/login");
           }}
         >
           <div className="flex p-3">
@@ -121,7 +120,8 @@ export default function Profile() {
           <div
             className="flex flex-row items-center"
             onClick={() => {
-              history.push("/profile");
+              // history.push("/profile");
+              navigate('/profile');
             }}
           >
             <img

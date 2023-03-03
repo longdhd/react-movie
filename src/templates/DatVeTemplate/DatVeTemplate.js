@@ -1,27 +1,24 @@
 import { Fragment, useEffect } from "react";
-import {Redirect, Route} from 'react-router';
+import { Redirect, Route } from "react-router";
+import { Navigate, Outlet } from "react-router-dom";
 import { USER_LOGIN } from "../../util/settings/config";
 
 const DatVeTemplate = (props) => {
-    
-    const {Component,...restProps} = props;
+  const { Component, ...restProps } = props;
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-      })
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
-    if(!localStorage.getItem(USER_LOGIN)){
-        return <Redirect to='/login' />
-    }
+  if (!localStorage.getItem(USER_LOGIN)) {
+    return <Navigate to="/login" />;
+  }
 
-    return <Route {...restProps} render={(propsRoute) => {
-        
-        return <Fragment>
-            <Component {...propsRoute} />
-        </Fragment>
-    }} />
-
-
-}
+  return (
+    <Fragment>
+      <Outlet />
+    </Fragment>
+  );
+};
 
 export default DatVeTemplate;

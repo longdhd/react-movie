@@ -1,3 +1,4 @@
+import { GROUPID } from "../util/settings/config";
 import { baseService } from "./baseService";
 
 //Sử dụng nghiệp vụ liên quan tới API
@@ -24,9 +25,9 @@ export class QuanLyNguoiDungSerVice extends baseService{
 
     layDanhSachNguoiDung =(tuKhoa) =>{
         if(tuKhoa !== ''){
-            return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP05&tuKhoa=${tuKhoa}`)
+            return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}&tuKhoa=${tuKhoa}`)
         }
-        return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP05`)
+        return this.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}`)
     }
 
     xoaNguoiDung =(taiKhoan)=>{

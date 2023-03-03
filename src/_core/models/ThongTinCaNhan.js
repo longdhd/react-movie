@@ -4,7 +4,7 @@ export class ThongTinCaNhan {
     hoTen = "";
     email = "";
     soDT = "";
-    maNhom = "GP05";
+    maNhom = "GP06";
     loaiNguoiDung = null;
     thongTinDatVe = []
   }

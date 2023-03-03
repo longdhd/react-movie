@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { history } from "../../App";
 import { qLPhimService } from "../../services/QuanLyPhimService";
 import { SET_DANH_SACH_PHIM, SET_THONG_TIN_PHIM } from "../types/QuanLyPhimType";
@@ -45,11 +46,12 @@ export const layThongTinPhimAction = (maPhim) => {
 export const capNhatPhimUploadAction = (formData) => {
   return async (dispatch) => {
     try {
+      const navigate = useNavigate();
       const result = await qLPhimService.capNhatPhimUpload(formData);
       alert('Cập nhật phim thành công!');
       dispatch(layDanhSachPhimAction());
-      history.push('/admin/films');
-      
+      // history.push('/admin/films');
+      navigate('/admin/films');  
     } catch (error) {
       console.log('error',error.response?.data);
     }

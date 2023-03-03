@@ -9,8 +9,10 @@ import {
   themPhimUploadHinhAction,
 } from "../../../../Redux/action/QuanLyPhimAction";
 import { GROUPID } from "../../../../util/settings/config";
+import { useParams } from "react-router-dom";
 
 const Edit = (props) => {
+  const { id } = useParams();
   const [componentSize, setComponentSize] = useState("default");
   const [ImgSrc, setImgSrc] = useState("");
   const onFormLayoutChange = ({ size }) => {
@@ -19,7 +21,6 @@ const Edit = (props) => {
   const dispatch = useDispatch();
   const { filmDetail } = useSelector((state) => state.QuanLyPhimReducer);
   useEffect(() => {
-    let { id } = props.match.params;
     dispatch(layThongTinPhimAction(id));
   }, []);
 

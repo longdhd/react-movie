@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { capNhatThongTinNguoiDungAction, layThongTinTaiKhoanAction } from "../../../Redux/action/QuanLyNguoiDungAction";
 import './ThongTinCaNhan.css';
 import { BarcodeOutlined, IdcardOutlined, MailOutlined, PhoneOutlined, UserOutlined, UserSwitchOutlined } from "@ant-design/icons";
+import { GROUPID } from "../../../util/settings/config";
 
 const { TabPane } = Tabs;
 
@@ -28,7 +29,7 @@ export default function ThongTinCaNhan() {
       matKhau: userInfo.matKhau,
       email: userInfo.email,
       soDt: userInfo.soDT,
-      maNhom: "GP05",
+      maNhom: GROUPID,
       hoTen: userInfo?.hoTen,
       maLoaiNguoiDung: userInfo.loaiNguoiDung,
     },

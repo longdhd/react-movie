@@ -10,8 +10,6 @@ export default function LogIn() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const {userLogin} = useSelector(state => state.QuanLyNguoiDungReducer);
-
     const formik = useFormik({
 
         initialValues: {

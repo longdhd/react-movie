@@ -4,11 +4,12 @@ import { Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { layDanhSachPhimAction, xoaPhimAction } from "../../../Redux/action/QuanLyPhimAction";
 import moment from "moment";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CalendarOutlined, DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { history } from "./../../../App";
 
 export default function Films(props) {
+  const navigate = useNavigate();
   const { arrFilm } = useSelector((state) => state.QuanLyPhimReducer);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -123,7 +124,7 @@ export default function Films(props) {
       />
       <div className="flex justify-end mb-3">
         <Button onClick={()=> {
-          history.push('/admin/films/addnew')
+          navigate('/admin/films/addnew');
         }} style={{background:'#1890ff',color:'#fff',fontSize:'0.95rem',display:'flex',alignItems:'center'}}>Thêm phim<PlusOutlined style={{paddingBottom:2}} /></Button>
       </div>
       <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} />
