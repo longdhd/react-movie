@@ -36,7 +36,10 @@
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.1.8",
     "web-vitals": "^1.1.2",
-    "yup": "^0.32.10"
+    "yup": "^0.32.10",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.9"
   },
   "scripts": {
     "start": "craco start",
