@@ -2,6 +2,9 @@
 
 Stack: ReactJS, React-Router v6, Redux, TailwindCSS, Antdesign.
 
+## Deployed At
+https://react-movie.herokuapp.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
