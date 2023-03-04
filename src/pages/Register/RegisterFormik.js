@@ -4,9 +4,11 @@ import { useDispatch } from "react-redux";
 import { dangKyAction } from "../../Redux/action/QuanLyNguoiDungAction";
 import { GROUPID } from "../../util/settings/config";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterFormik() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const validation = Yup.object({
     taiKhoan: Yup.string()
@@ -45,7 +47,7 @@ export default function RegisterFormik() {
         console.log(values);
         let agreeCheckbox = document.querySelector('#agree');
         if(agreeCheckbox.checked){
-            const action = dangKyAction(values);
+            const action = dangKyAction(values, () => navigate("/login"));
             dispatch(action);
         }else{
             alert('Vui lòng đọc điều khoản và tick đồng ý!');

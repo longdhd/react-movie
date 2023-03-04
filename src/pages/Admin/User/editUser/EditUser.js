@@ -3,7 +3,7 @@ import { Form, Input, Tabs, Select } from 'antd';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { layDanhSachNguoiDungAction, capNhatThongTinNguoiDungAction } from './../../../../Redux/action/QuanLyNguoiDungAction';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 const { TabPane } = Tabs;
 
 function callback(key) {
@@ -12,7 +12,8 @@ function callback(key) {
 
 export default function EditUser(props) {
     const {id} = useParams();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {danhSachNguoiDung} = useSelector(state => state.QuanLyNguoiDungReducer)
     useEffect(() => {
         dispatch(layDanhSachNguoiDungAction(id))
@@ -43,7 +44,7 @@ export default function EditUser(props) {
             maLoaiNguoiDung: danhSachNguoiDung[0]?.maLoaiNguoiDung
         },
         onSubmit: (values) => {
-            dispatch(capNhatThongTinNguoiDungAction(values))
+            dispatch(capNhatThongTinNguoiDungAction(values, navigate("/admin/users")))
         }
     });
     return (
